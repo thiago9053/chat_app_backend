@@ -3,10 +3,10 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
-import { router } from "./router";
+import { router } from './router';
 
 const origin = {
-  origin: "*",
+	origin: "*",
 };
 
 const app = express();
@@ -23,5 +23,5 @@ app.use(router);
 const port = process.env.PORT || 1211;
 
 app.listen(port, () => {
-  console.log(`[App]: Listening on port ${port}`);
+	console.log(`[App]: Listening on port ${port}`);
 });
