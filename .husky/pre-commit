@@ -3,7 +3,7 @@
 
 echo '🏗️👷 testing and buidling before commit'
 
-yarn lint --fix ||
+yarn lint ||
 (
     echo 'ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
     false;

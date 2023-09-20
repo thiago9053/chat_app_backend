@@ -1,5 +1,5 @@
 import { Result } from "./Result";
-import { ServiceError } from './ServiceError';
+import { ServiceError } from "./ServiceError";
 
 export namespace AppError {
 	export class UnexpectedError extends Result<ServiceError> {
