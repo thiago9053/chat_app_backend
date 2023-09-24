@@ -1,14 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
+  url      = "mongodb://mongo:27017/chat_app"
 }
 
-model test {
-  id     String   @id @default(auto()) @map("_id") @db.ObjectId
-  gender Boolean?
-  name   String
+model users {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @unique
+  email     String   @unique
+  username  String
+  password  String
+  isEmailVerified Boolean?
+  accessToken String?
+  refreshToken String?
+  isDeleted Boolean?
+  lastLogin DateTime?
 }

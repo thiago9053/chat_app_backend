@@ -5,9 +5,8 @@ services:
     image: chat_app:v1
     volumes:
       - ./:/app
-    environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - PORT=${PORT}
+    env_file:
+      - .env
     ports:
       - "${PORT}:${PORT}"
     restart: unless-stopped
@@ -15,7 +14,17 @@ services:
       - db
 
   db:
-    image: mongo:4.4
+    build:
+      context: .
+      dockerfile: Dockerfile.mongo
     volumes:
       - .docker/database:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=mongo
+      - MONGO_REPLICA_HOST=localhost
+      - MONGO_REPLICA_PORT=27017
+    ports:
+      - "27017:27017"
     restart: unless-stopped

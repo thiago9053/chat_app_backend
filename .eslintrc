@@ -12,6 +12,7 @@
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "prefer-const": "off",
-    "quotes": "error"
+    "quotes": "error",
+    "no-extra-boolean-cast": "off"
   }
 }
