@@ -30,7 +30,6 @@ export abstract class AbstractRedisClient {
 
 	public async getAllKeyValue(wildcard: string): Promise<any[]> {
 		const keys: string[] = await this.redis.keys(wildcard);
-
 		const allResults = await Promise.all(
 			keys.map(async (key) => {
 				const value = await this.getOne(key);
@@ -42,7 +41,7 @@ export abstract class AbstractRedisClient {
 	}
 
 	public async set(key: string, value: any): Promise<any> {
-		return this.redis.pipeline().set(key, value).expire(key, this.tokenExpiryTime);
+		return this.redis.set(key, value, "EX", 3600);
 	}
 
 	public deleteOne(key: string): Promise<number> {

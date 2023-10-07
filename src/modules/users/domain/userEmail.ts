@@ -21,7 +21,7 @@ export class UserEmail extends ValueObject<UserEmailProps> {
 	}
 
 	private static format(email: string): string {
-		return email.trim().toLowerCase();
+		return email?.trim().toLowerCase();
 	}
 
 	public static create(email: string): Result<UserEmail> {

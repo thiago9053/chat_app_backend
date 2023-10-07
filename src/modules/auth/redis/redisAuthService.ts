@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { config } from "@config/config";
 import { AbstractRedisClient } from "./abstractRedis";
 import { IAuthService } from "./authService";
-import { RefreshToken, JWTToken, JWTClaims } from "../domain/jwt";
+import { RefreshToken, AccessToken, JWTClaims } from "../domain/jwt";
 import { User } from "@modules/users/domain/user";
 
 export class RedisAuthService extends AbstractRedisClient implements IAuthService {
@@ -44,7 +44,7 @@ export class RedisAuthService extends AbstractRedisClient implements IAuthServic
 		return crypto.randomBytes(256).toString("hex");
 	}
 
-	public signJWT(props: JWTClaims): JWTToken {
+	public signJWT(props: JWTClaims): AccessToken {
 		const claims: JWTClaims = {
 			email: props.email,
 			username: props.username,
@@ -57,20 +57,16 @@ export class RedisAuthService extends AbstractRedisClient implements IAuthServic
 		});
 	}
 
-	public async decodeJWT(token: string): Promise<JWTClaims> {
-		return new Promise((resolve, reject) => {
-			jwt.verify(token, config.secretKey, (err, decoded) => {
-				if (err) return reject(null);
-				return resolve(decoded as JWTClaims);
-			});
-		});
+	public decodeJWT(token: string): JWTClaims {
+		const claims = jwt.verify(token, config.secretKey);
+		return claims as JWTClaims;
 	}
 
 	private constructKey(username: string, refreshToken: RefreshToken): string {
 		return `refresh-${refreshToken}.${this.jwtHashName}.${username}`;
 	}
 
-	public addToken(username: string, refreshToken: RefreshToken, token: JWTToken): Promise<any> {
+	public addToken(username: string, refreshToken: RefreshToken, token: AccessToken): Promise<any> {
 		return this.set(this.constructKey(username, refreshToken), token);
 	}
 

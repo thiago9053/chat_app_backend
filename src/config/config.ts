@@ -6,5 +6,5 @@ export const config = {
 	port: PORT || 1211,
 	databaseUrl: DATABASE_URL,
 	secretKey: SECRET_KEY,
-	tokenExpiryTime: TOKEN_EXPIRY_TIME || 3600,
+	tokenExpiryTime: TOKEN_EXPIRY_TIME || "1h",
 } as AppConfig;

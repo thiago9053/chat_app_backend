@@ -1,6 +1,7 @@
 import { UserAdapter } from "@modules/users/adapters/userAdapter";
 import { User } from "@modules/users/domain/user";
 import { UserEmail } from "@modules/users/domain/userEmail";
+import { UserId } from "@modules/users/domain/userId";
 import { UserName } from "@modules/users/domain/userName";
 import { IUserRepo } from "@modules/users/repos/userRepo";
 import { PrismaClient } from "@prisma/client";
@@ -33,6 +34,21 @@ export class PrismaUserRepo implements IUserRepo {
 		const user = await this.models.users.findFirst({
 			where: {
 				username: userName.value,
+			},
+		});
+		console.log(user);
+
+		if (!!user === false) return false;
+		return UserAdapter.toDomain(user);
+	}
+
+	async getUserByUserId(userId: UserId | string): Promise<User | boolean> {
+		let uid: string;
+		if (userId instanceof UserId) uid = userId.getStringValue();
+		else uid = userId;
+		const user = await this.models.users.findFirst({
+			where: {
+				id: uid,
 			},
 		});
 

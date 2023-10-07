@@ -3,11 +3,20 @@ import { User } from "../domain/user";
 import { UserPassword } from "@modules/users/domain/userPassword";
 import { UserEmail } from "@modules/users/domain/userEmail";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
+import { UserDTO } from "@modules/users/dtos/userDTO";
 
 export class UserAdapter {
+	public static toDTO(user: User): UserDTO {
+		return {
+			username: user.username.value,
+			isEmailVerified: user.isEmailVerified,
+			isDeleted: user.isDeleted,
+		};
+	}
+
 	public static toDomain(raw: any): User {
 		const userNameOrError = UserName.create({ name: raw.username });
-		const userPasswordOrError = UserPassword.create({ value: raw.user_password, hashed: true });
+		const userPasswordOrError = UserPassword.create({ value: raw.password, hashed: true });
 		const userEmailOrError = UserEmail.create(raw.user_email);
 
 		const userOrError = User.create(

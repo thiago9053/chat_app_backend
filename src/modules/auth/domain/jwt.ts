@@ -5,7 +5,7 @@ export interface JWTClaims {
 	username: string;
 }
 
-export type JWTToken = string;
+export type AccessToken = string;
 
 export type SessionId = string;
 
