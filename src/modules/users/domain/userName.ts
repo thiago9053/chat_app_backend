@@ -19,6 +19,11 @@ export class UserName extends ValueObject<UserNameProps> {
 	}
 
 	public static create(props: UserNameProps): Result<UserName> {
+		const emptyResult = Validate.againstEmpty(props.name, "username");
+		if (!emptyResult.isSuccess) {
+			return Result.fail<UserName>(emptyResult.getError());
+		}
+
 		const usernameResult = Validate.againstNullOrUndefined(props.name, "username");
 		if (!usernameResult.isSuccess) {
 			return Result.fail<UserName>(usernameResult.getError());

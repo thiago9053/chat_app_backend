@@ -29,7 +29,7 @@ export class LoginController extends BaseController {
 					case LoginUseCaseErrors.PasswordDoesntMatchError:
 						return this.clientError(res, error.getError().message);
 					default:
-						return this.fail(res, error.getError().message);
+						return this.fail(res, error.getError() as Error);
 				}
 			} else {
 				const dto: LoginDTOResponse = result.value.getValue() as LoginDTOResponse;

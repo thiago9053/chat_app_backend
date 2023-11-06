@@ -43,10 +43,16 @@ export class Validate {
 
 	public static againstNullOrUndefined(argument: any, argumentName: string): Result<ValidateResponse> {
 		if (argument === null || argument === undefined) {
-			return Result.fail<ValidateResponse>(`${argumentName} is null or undefined`);
+			return Result.fail<ValidateResponse>(`Field ${argumentName} is null or undefined`);
 		} else {
 			return Result.ok<ValidateResponse>();
 		}
+	}
+
+	public static againstEmpty(argument: string, argumentName: string): Result<ValidateResponse> {
+		return argument === ""
+			? Result.fail<ValidateResponse>(`Field ${argumentName} is empty`)
+			: Result.ok<ValidateResponse>();
 	}
 
 	public static againstNullOrUndefinedMultiple(args: ValidateArgumentCollection): Result<ValidateResponse> {
