@@ -27,7 +27,7 @@ export class UserAdapter {
 				password: userPasswordOrError.getValue(),
 				email: userEmailOrError.getValue(),
 			},
-			new UniqueEntityID(raw.base_user_id)
+			new UniqueEntityID(raw.userId)
 		);
 
 		!userOrError.isSuccess ? console.log(userOrError.getError()) : "";

@@ -36,23 +36,26 @@ export class PrismaUserRepo implements IUserRepo {
 				username: userName.value,
 			},
 		});
-		console.log(user);
 
 		if (!!user === false) return false;
 		return UserAdapter.toDomain(user);
 	}
 
 	async getUserByUserId(userId: UserId | string): Promise<User | boolean> {
+		console.log(45, userId);
 		let uid: string;
-		if (userId instanceof UserId) uid = userId.getStringValue();
-		else uid = userId;
-		const user = await this.models.users.findFirst({
+		if (userId instanceof UserId) {
+			uid = userId.getStringValue();
+		} else {
+			uid = userId;
+		}
+		const user = await this.models.users.findUnique({
 			where: {
-				id: uid,
+				userId: uid,
 			},
 		});
-
-		if (!!user === false) return false;
+		console.log(54, user);
+		if (!user) return false;
 		return UserAdapter.toDomain(user);
 	}
 }
