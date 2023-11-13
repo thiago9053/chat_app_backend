@@ -41,7 +41,7 @@ export abstract class AbstractRedisClient {
 	}
 
 	public async set(key: string, value: any): Promise<any> {
-		return this.redis.set(key, value, "EX", 3600);
+		return this.redis.set(key, value, "EX", 3600 * 24 * 7);
 	}
 
 	public deleteOne(key: string): Promise<number> {

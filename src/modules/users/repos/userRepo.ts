@@ -8,5 +8,5 @@ export interface IUserRepo {
 	delete?(userId: UserId): Promise<void>;
 	exist(userEmail: UserEmail): Promise<boolean>;
 	getUserByUserId?(userId: UserId | string): Promise<User | boolean>;
-	getUserByUserName(userName: UserName): Promise<User | boolean>;
+	getUserByUserName(userName: UserName | string): Promise<User>;
 }

@@ -3,6 +3,8 @@ import { getCurrentUserController } from "@modules/users/services/getCurrentUser
 import { getUserByUserNameController } from "@modules/users/services/getUserByUserName";
 import { loginController } from "@modules/users/services/login";
 import { logoutController } from "@modules/users/services/logout";
+import { refreshAccessTokenController } from "@modules/users/services/refreshAccessToken";
+
 import { middleware } from "@shared/infra/middleware";
 import express from "express";
 
@@ -17,5 +19,7 @@ userRouter.post("/logout", middleware.ensureAuthenticated(), (req, res) => logou
 userRouter.get("/user", middleware.ensureAuthenticated(), (req, res) => getUserByUserNameController.execute(req, res));
 
 userRouter.get("/me", middleware.ensureAuthenticated(), (req, res) => getCurrentUserController.execute(req, res));
+
+userRouter.post("/token/refresh", (req, res) => refreshAccessTokenController.execute(req, res));
 
 export { userRouter };

@@ -30,14 +30,14 @@ export class PrismaUserRepo implements IUserRepo {
 		return;
 	}
 
-	async getUserByUserName(userName: UserName): Promise<User | boolean> {
+	async getUserByUserName(userName: UserName | string): Promise<User> {
 		const user = await this.models.users.findFirst({
 			where: {
-				username: userName.value,
+				username: typeof userName === "string" ? userName : userName.value,
 			},
 		});
 
-		if (!!user === false) return false;
+		if (!!user === false) throw new Error("User not found.");
 		return UserAdapter.toDomain(user);
 	}
 
