@@ -14,7 +14,7 @@ model users {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String   @unique
   email     String   @unique
-  username  String
+  username  String   @unique
   password  String
   isEmailVerified Boolean?
   accessToken String?

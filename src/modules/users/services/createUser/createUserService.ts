@@ -46,9 +46,7 @@ export class CreateUserService implements Service<CreateUserDTO, Promise<CreateU
 				if (userNameTaken) {
 					return left(new CreateUserErrors.UsernameTakenError(username.value)) as CreateUserResponse;
 				}
-			} catch (error) {
-				return left(new AppError.UnexpectedError(error)) as CreateUserResponse;
-			}
+			} catch (error) {}
 
 			const userOrError: Result<User> = User.create({
 				email,
