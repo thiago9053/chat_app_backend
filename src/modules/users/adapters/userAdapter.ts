@@ -11,6 +11,7 @@ export class UserAdapter {
 			username: user.username.value,
 			isEmailVerified: user.isEmailVerified,
 			isDeleted: user.isDeleted,
+			email: user.email.value,
 		};
 	}
 

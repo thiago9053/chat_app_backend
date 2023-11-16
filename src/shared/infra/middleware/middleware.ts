@@ -52,7 +52,7 @@ export class Middleware {
 				const signatureFailed = !decoded;
 
 				if (signatureFailed) {
-					return this.endRequest(403, "Token signature expired.", res);
+					return this.endRequest(403, "Token signature expired or invalid.", res);
 				}
 
 				// See if the token was found

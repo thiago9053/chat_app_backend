@@ -57,9 +57,13 @@ export class RedisAuthService extends AbstractRedisClient implements IAuthServic
 		});
 	}
 
-	public decodeJWT(token: string): JWTClaims {
-		const claims = jwt.verify(token, config.secretKey);
-		return claims as JWTClaims;
+	public decodeJWT(token: string): JWTClaims | null {
+		try {
+			const claims = jwt.verify(token, config.secretKey);
+			return claims as JWTClaims;
+		} catch (error) {
+			return null;
+		}
 	}
 
 	private constructKey(username: string, refreshToken: RefreshToken): string {
