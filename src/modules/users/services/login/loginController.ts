@@ -22,14 +22,13 @@ export class LoginController extends BaseController {
 
 			if (result.isLeft()) {
 				const error = result.value;
-
 				switch (error.constructor) {
 					case LoginUseCaseErrors.UserNameDoesntExistError:
 						return this.notFound(res, error.getError().message);
 					case LoginUseCaseErrors.PasswordDoesntMatchError:
 						return this.clientError(res, error.getError().message);
 					default:
-						return this.fail(res, error.getError() as Error);
+						return this.fail(res, error.getError() as any);
 				}
 			} else {
 				const dto: LoginDTOResponse = result.value.getValue() as LoginDTOResponse;

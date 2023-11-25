@@ -6,7 +6,7 @@ export namespace AppError {
 		public constructor(err: any) {
 			super(false, {
 				message: "An unexpected error occurred.",
-				error: err,
+				error: err.message,
 			} as ServiceError);
 			console.log("[AppError]: An unexpected error occurred");
 			console.error(err);

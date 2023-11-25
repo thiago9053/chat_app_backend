@@ -62,9 +62,9 @@ export abstract class BaseController {
 		return BaseController.jsonResponse(res, 400, "TODO");
 	}
 
-	public fail(res: Response, error: string | Error) {
+	public fail(res: Response, error: any) {
 		return res.status(500).json({
-			message: error.toString(),
+			message: error instanceof Object ? error?.error.toString() : error,
 		});
 	}
 }

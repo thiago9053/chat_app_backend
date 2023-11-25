@@ -3,4 +3,7 @@ export interface AppConfig {
 	databaseUrl: string;
 	secretKey: string;
 	tokenExpiryTime: string;
+	redisHost: string;
+	redisPort: number;
+	redisPassword: string;
 }
