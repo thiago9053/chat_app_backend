@@ -1,8 +1,8 @@
 import { AccessToken, RefreshToken } from "@modules/users/domain/jwt";
-import { UserEmail } from "@modules/users/domain/userEmail";
-import { UserId } from "@modules/users/domain/userId";
-import { UserName } from "@modules/users/domain/userName";
-import { UserPassword } from "@modules/users/domain/userPassword";
+import { UserEmail } from "./userEmail";
+import { UserId } from "./userId";
+import { UserName } from "./userName";
+import { UserPassword } from "./userPassword";
 import { Result } from "@shared/core/Result";
 import { Validate } from "@shared/core/Validate";
 import { AggregateRoot } from "@shared/domain/AggregateRoot";
@@ -79,13 +79,13 @@ export class User extends AggregateRoot<UserProps> {
 	}
 
 	public static create(props: UserProps, id?: UniqueEntityID): Result<User> {
-		const guardResult = Validate.againstNullOrUndefinedMultiple([
+		const validateResult = Validate.againstNullOrUndefinedMultiple([
 			{ argument: props.username, argumentName: "username" },
 			{ argument: props.email, argumentName: "email" },
 		]);
 
-		if (!guardResult.isSuccess) {
-			return Result.fail<User>(guardResult.getError());
+		if (!validateResult.isSuccess) {
+			return Result.fail<User>(validateResult.getError());
 		}
 
 		const user = new User(

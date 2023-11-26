@@ -22,3 +22,13 @@ model users {
   isDeleted Boolean?
   lastLogin DateTime?
 }
+
+model profiles {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  profileId String @unique
+  userId    String @unique
+  signature String?
+  location  String?
+  phoneNumber String?
+  status    String?
+}

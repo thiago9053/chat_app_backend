@@ -7,6 +7,8 @@ export interface IUserRepo {
 	create(user: User): Promise<void>;
 	delete?(userId: UserId): Promise<void>;
 	exist(userEmail: UserEmail): Promise<boolean>;
-	getUserByUserId?(userId: UserId | string): Promise<User | boolean>;
+	getUserByUserId(userId: UserId | string): Promise<User | boolean>;
 	getUserByUserName(userName: UserName | string): Promise<User>;
+	updateEmail(userId: string, email: UserEmail): Promise<void>;
+	updatePassword(userId: string, hasedPassword: string): Promise<void>;
 }

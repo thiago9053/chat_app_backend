@@ -1,6 +1,5 @@
 import { Result } from "../../../shared/core/Result";
 import { ValueObject } from "../../../shared/domain/ValueObject";
-import Joi from "joi";
 
 export interface UserEmailProps {
 	value: string;
@@ -16,8 +15,8 @@ export class UserEmail extends ValueObject<UserEmailProps> {
 	}
 
 	private static isValidEmail(email: string) {
-		const emailSchema = Joi.string().email();
-		return emailSchema.validate(email);
+		const re = /^\S+@\S+\.\S+$/;
+		return re.test(email);
 	}
 
 	private static format(email: string): string {
@@ -26,7 +25,7 @@ export class UserEmail extends ValueObject<UserEmailProps> {
 
 	public static create(email: string): Result<UserEmail> {
 		if (!this.isValidEmail(email)) {
-			return Result.fail<UserEmail>("Email address not valid");
+			return Result.fail<UserEmail>("Email address is not valid");
 		} else {
 			return Result.ok<UserEmail>(new UserEmail({ value: this.format(email) }));
 		}

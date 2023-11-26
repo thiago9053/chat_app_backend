@@ -36,7 +36,7 @@ export class UserName extends ValueObject<UserNameProps> {
 
 		const maxLengthResult = Validate.againstAtMost(this.maxLength, props.name);
 		if (!maxLengthResult.isSuccess) {
-			return Result.fail<UserName>(minLengthResult.getError());
+			return Result.fail<UserName>(maxLengthResult.getError());
 		}
 
 		return Result.ok<UserName>(new UserName(props));

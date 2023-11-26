@@ -18,7 +18,7 @@ export class UserAdapter {
 	public static toDomain(raw: any): User {
 		const userNameOrError = UserName.create({ name: raw.username });
 		const userPasswordOrError = UserPassword.create({ value: raw.password, hashed: true });
-		const userEmailOrError = UserEmail.create(raw.user_email);
+		const userEmailOrError = UserEmail.create(raw.email);
 
 		const userOrError = User.create(
 			{

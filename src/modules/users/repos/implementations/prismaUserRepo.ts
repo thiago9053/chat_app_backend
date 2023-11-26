@@ -42,7 +42,6 @@ export class PrismaUserRepo implements IUserRepo {
 	}
 
 	async getUserByUserId(userId: UserId | string): Promise<User | boolean> {
-		console.log(45, userId);
 		let uid: string;
 		if (userId instanceof UserId) {
 			uid = userId.getStringValue();
@@ -54,8 +53,29 @@ export class PrismaUserRepo implements IUserRepo {
 				userId: uid,
 			},
 		});
-		console.log(54, user);
 		if (!user) return false;
 		return UserAdapter.toDomain(user);
+	}
+
+	async updateEmail(userId: string, email: UserEmail): Promise<void> {
+		await this.models.users.update({
+			where: {
+				userId: userId,
+			},
+			data: {
+				email: email.value,
+			},
+		});
+	}
+
+	async updatePassword(userId: string, hashedPassword: string): Promise<void> {
+		await this.models.users.update({
+			where: {
+				userId: userId,
+			},
+			data: {
+				password: hashedPassword,
+			},
+		});
 	}
 }

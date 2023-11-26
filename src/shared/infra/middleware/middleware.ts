@@ -48,7 +48,6 @@ export class Middleware {
 			// Confirm that the token was signed with our signature.
 			if (token) {
 				const decoded = this.authService.decodeJWT(token);
-				console.log("51", decoded);
 				const signatureFailed = !decoded;
 
 				if (signatureFailed) {
