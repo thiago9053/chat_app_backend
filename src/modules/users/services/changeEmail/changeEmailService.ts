@@ -24,9 +24,8 @@ export class ChangeEmailService implements Service<ChangeEmailDTO, Promise<Chang
 			const emailOrError = UserEmail.create(request?.email as string);
 			userId = request?.userId;
 
-			const dtoResult = Result.combine([emailOrError]);
-			if (!dtoResult.isSuccess) {
-				return left(Result.fail<void>(dtoResult.getError())) as ChangeEmailResponse;
+			if (!emailOrError.isSuccess) {
+				return left(Result.fail<void>(emailOrError.getError().toString())) as ChangeEmailResponse;
 			}
 
 			email = emailOrError.getValue();

@@ -1,21 +1,21 @@
 import { DecodedExpressRequest } from "@modules/auth/models/decodedRequest";
-import { ChangeEmailDTO } from "./changeEmailDTO";
-import { ChangeEmailErrors } from "./changeEmailErrors";
-import { ChangeEmailService } from "./changeEmailService";
+import { ChangePasswordErrors } from "./changePasswordErrors";
+import { ChangePasswordService } from "./changePasswordService";
 import { BaseController } from "@shared/infra/controller/BaseController";
 import { Response } from "express";
+import { ChangePasswordDTO } from "./changePasswordDTO";
 
-export class ChangeEmailController extends BaseController {
-	private service: ChangeEmailService;
+export class ChangePasswordController extends BaseController {
+	private service: ChangePasswordService;
 
-	constructor(service: ChangeEmailService) {
+	constructor(service: ChangePasswordService) {
 		super();
 		this.service = service;
 	}
 
 	async executeImpl(req: DecodedExpressRequest, res: Response): Promise<any> {
 		const { userId } = req.decoded;
-		const dto: Omit<ChangeEmailDTO, "userId"> = req.body as Omit<ChangeEmailDTO, "userId">;
+		const dto: Omit<ChangePasswordDTO, "userId"> = req.body as Omit<ChangePasswordDTO, "userId">;
 
 		try {
 			const result = await this.service.execute({ ...dto, userId });
@@ -23,9 +23,9 @@ export class ChangeEmailController extends BaseController {
 			if (result.isLeft()) {
 				const error = result.value;
 				switch (error.constructor) {
-					case ChangeEmailErrors.UserDoesntExistError:
+					case ChangePasswordErrors.UserDoesntExistError:
 						return this.notFound(res, error.getError().message);
-					case ChangeEmailErrors.SameEmail:
+					case ChangePasswordErrors.SameAsOldPassword:
 						return this.conflict(res, error.getError().message);
 					default:
 						return this.fail(res, error.getError());
@@ -34,7 +34,6 @@ export class ChangeEmailController extends BaseController {
 				return this.ok(res);
 			}
 		} catch (err) {
-			console.log(38, err);
 			return this.fail(res, err as string | Error);
 		}
 	}

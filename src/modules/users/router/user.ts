@@ -1,4 +1,5 @@
 import { changeEmailController } from "@modules/users/services/changeEmail";
+import { changePasswordController } from "@modules/users/services/changePassword";
 import { createUserController } from "@modules/users/services/createUser";
 import { getCurrentUserController } from "@modules/users/services/getCurrentUser";
 import { getUserByUserNameController } from "@modules/users/services/getUserByUserName";
@@ -25,6 +26,10 @@ userRouter.post("/token/refresh", (req, res) => refreshAccessTokenController.exe
 
 userRouter.post("/email/update", middleware.ensureAuthenticated(), (req, res) =>
 	changeEmailController.execute(req, res)
+);
+
+userRouter.post("/password/update", middleware.ensureAuthenticated(), (req, res) =>
+	changePasswordController.execute(req, res)
 );
 
 export { userRouter };
