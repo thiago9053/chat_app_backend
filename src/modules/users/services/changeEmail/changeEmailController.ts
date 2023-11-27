@@ -34,7 +34,6 @@ export class ChangeEmailController extends BaseController {
 				return this.ok(res);
 			}
 		} catch (err) {
-			console.log(38, err);
 			return this.fail(res, err as string | Error);
 		}
 	}

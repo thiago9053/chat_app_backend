@@ -7,6 +7,7 @@ import { Result } from "@shared/core/Result";
 import { Validate } from "@shared/core/Validate";
 import { AggregateRoot } from "@shared/domain/AggregateRoot";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
+import { UserCreated } from "@modules/users/domain/events/userCreated";
 
 interface UserProps {
 	email: UserEmail;
@@ -88,6 +89,7 @@ export class User extends AggregateRoot<UserProps> {
 			return Result.fail<User>(validateResult.getError());
 		}
 
+		const isNewUser = !!id === false;
 		const user = new User(
 			{
 				...props,
@@ -96,6 +98,10 @@ export class User extends AggregateRoot<UserProps> {
 			},
 			id
 		);
+
+		if (isNewUser) {
+			user.addDomainEvent(new UserCreated(user));
+		}
 
 		return Result.ok<User>(user);
 	}

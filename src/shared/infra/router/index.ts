@@ -1,4 +1,5 @@
 import { userRouter } from "@modules/users/router/user";
+import { profileRouter } from "@modules/profiles/router/profile";
 import express, { Request, Response } from "express";
 
 const router = express.Router();
@@ -8,5 +9,6 @@ router.get("/", (req: Request, res: Response) => {
 });
 
 router.use("/user", userRouter);
+router.use("/profile", profileRouter);
 
 export { router };

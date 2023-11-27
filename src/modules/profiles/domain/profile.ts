@@ -33,15 +33,15 @@ export class Profile extends AggregateRoot<ProfileProps> {
 	}
 
 	get userId(): UserId {
-		return this.userId;
+		return this.props.userId;
 	}
 
 	get location(): ProfileLocation {
-		return this.location;
+		return this.props.location;
 	}
 
 	public static create(props: ProfileProps, id?: UniqueEntityID): Result<Profile> {
-		const validateResult = Validate.againstNullOrUndefined(props.userId, "user id");
+		const validateResult = Validate.againstNullOrUndefined(props.userId, "userId");
 
 		if (!validateResult.isSuccess) {
 			return Result.fail<Profile>(validateResult.getError());

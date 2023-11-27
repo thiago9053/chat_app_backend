@@ -18,16 +18,6 @@ export class ProfileSignature extends ValueObject<SignatureProps> {
 	}
 
 	public static create(props: SignatureProps): Result<ProfileSignature> {
-		const emptyResult = Validate.againstEmpty(props.signature, "signature");
-		if (!emptyResult.isSuccess) {
-			return Result.fail<ProfileSignature>(emptyResult.getError());
-		}
-
-		const signatureResult = Validate.againstNullOrUndefined(props.signature, "signature");
-		if (!signatureResult.isSuccess) {
-			return Result.fail<ProfileSignature>(signatureResult.getError());
-		}
-
 		const maxLengthResult = Validate.againstAtMost(this.maxLength, props.signature);
 		if (!maxLengthResult.isSuccess) {
 			return Result.fail<ProfileSignature>(maxLengthResult.getError());

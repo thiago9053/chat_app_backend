@@ -18,16 +18,6 @@ export class ProfileLocation extends ValueObject<LocationProps> {
 	}
 
 	public static create(props: LocationProps): Result<ProfileLocation> {
-		const emptyResult = Validate.againstEmpty(props.location, "location");
-		if (!emptyResult.isSuccess) {
-			return Result.fail<ProfileLocation>(emptyResult.getError());
-		}
-
-		const locationResult = Validate.againstNullOrUndefined(props.location, "location");
-		if (!locationResult.isSuccess) {
-			return Result.fail<ProfileLocation>(locationResult.getError());
-		}
-
 		const maxLengthResult = Validate.againstAtMost(this.maxLength, props.location);
 		if (!maxLengthResult.isSuccess) {
 			return Result.fail<ProfileLocation>(maxLengthResult.getError());
