@@ -32,4 +32,22 @@ export class PrismaProfileRepo implements IProfileRepo {
 		if (!profile) throw new Error("Profile not found.");
 		return ProfileAdapter.toDomain(profile);
 	}
+
+	async updateProfile(userId: string | UserId, field: string, data: any): Promise<void> {
+		let uid: string;
+		if (userId instanceof UserId) {
+			uid = userId.getStringValue();
+		} else {
+			uid = userId;
+		}
+
+		await this.models.profiles.update({
+			where: {
+				userId: uid,
+			},
+			data: {
+				[field]: data,
+			},
+		});
+	}
 }

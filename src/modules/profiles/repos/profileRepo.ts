@@ -6,5 +6,5 @@ export interface IProfileRepo {
 	create(profile: Profile): Promise<void>;
 	getProfileByProfileId?(profileId: ProfileId | string): Promise<Profile>;
 	getProfileByUserId(userId: UserId | string): Promise<Profile>;
-	updateProfile?(userId: UserId | string, field: string, data: any): Promise<void>;
+	updateProfile(userId: UserId | string, field: string, data: any): Promise<void>;
 }
