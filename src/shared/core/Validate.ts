@@ -36,12 +36,13 @@ export class Validate {
 	}
 
 	public static againstAtMost(numChars: number, text: string): Result<ValidateResponse> {
-		return text.length <= numChars
+		return (text || "").length <= numChars
 			? Result.ok<ValidateResponse>()
 			: Result.fail<ValidateResponse>(`Text is greater than ${numChars} chars.`);
 	}
 
 	public static againstNullOrUndefined(argument: any, argumentName: string): Result<ValidateResponse> {
+		console.log(argument, argumentName);
 		if (argument === null || argument === undefined) {
 			return Result.fail<ValidateResponse>(`Field ${argumentName} is null or undefined`);
 		} else {

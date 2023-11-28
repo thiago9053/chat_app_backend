@@ -2,12 +2,13 @@ import { IProfileRepo } from "../profileRepo";
 import { ProfileAdapter } from "@modules/profiles/adapters/profileAdapter";
 import { Profile } from "@modules/profiles/domain/profile";
 import { UserId } from "@modules/users/domain/userId";
+import { ExtendedPrismaClient } from "@shared/infra/database/prisma";
 //import { PrismaClient } from "@prisma/client";
 
 export class PrismaProfileRepo implements IProfileRepo {
-	private models: any;
+	private models: ExtendedPrismaClient;
 
-	constructor(models: any) {
+	constructor(models: ExtendedPrismaClient) {
 		this.models = models;
 	}
 

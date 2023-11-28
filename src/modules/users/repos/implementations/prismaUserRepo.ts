@@ -4,12 +4,12 @@ import { UserEmail } from "@modules/users/domain/userEmail";
 import { UserId } from "@modules/users/domain/userId";
 import { UserName } from "@modules/users/domain/userName";
 import { IUserRepo } from "@modules/users/repos/userRepo";
-//import { PrismaClient } from "@prisma/client";
+import { ExtendedPrismaClient } from "@shared/infra/database/prisma";
 
 export class PrismaUserRepo implements IUserRepo {
-	private models: any;
+	private models: ExtendedPrismaClient;
 
-	constructor(models: any) {
+	constructor(models: ExtendedPrismaClient) {
 		this.models = models;
 	}
 	async exist(userEmail: UserEmail): Promise<boolean> {
@@ -25,7 +25,7 @@ export class PrismaUserRepo implements IUserRepo {
 		const exist = await this.exist(user.email);
 		if (!exist) {
 			const rawUser = await UserAdapter.toPersistence(user);
-			await this.models.users.createWithPre({ data: rawUser });
+			await this.models.users.createWithPost({ data: rawUser });
 		}
 		return;
 	}

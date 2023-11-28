@@ -4,13 +4,23 @@ import { ProfilePhoneNumber } from "@modules/profiles/domain/profilePhoneNumber"
 import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { UserId } from "@modules/users/domain/userId";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
+import { ProfileDTO } from "@modules/profiles/dtos/profileDTO";
 
 export class ProfileAdapter {
+	public static toDTO(profile: Profile): ProfileDTO {
+		return {
+			location: profile.location.value,
+			signature: profile.signature.value,
+			phoneNumner: profile.phoneNumber.value,
+		};
+	}
+
 	public static toDomain(raw: any): Profile {
+		console.log(raw);
 		const userIdOrError = UserId.create(new UniqueEntityID(raw.userId));
-		const signatureOrError = ProfileSignature.create(raw.signature);
-		const phoneNumberOrError = ProfilePhoneNumber.create(raw.phoneNumber);
-		const locationOrError = ProfileLocation.create(raw.location);
+		const signatureOrError = ProfileSignature.create({ signature: raw.signature });
+		const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: raw.phoneNumber });
+		const locationOrError = ProfileLocation.create({ location: raw.location });
 
 		const profileOrError = Profile.create(
 			{
