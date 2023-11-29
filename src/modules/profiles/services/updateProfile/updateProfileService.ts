@@ -55,6 +55,11 @@ export class UpdateProfileService implements Service<UpdateProfileDTO, Promise<U
 					await this.profileRepo.updateProfile(user.userId, field, locationOrError.getValue().value);
 					break;
 				}
+				case "avatarUrl":
+				case "coverImageUrl": {
+					await this.profileRepo.updateProfile(user.userId, field, data);
+					break;
+				}
 				default:
 					return left(new UpdateProfileErrors.FieldDoesntExistsError(field));
 			}

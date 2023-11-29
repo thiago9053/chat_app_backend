@@ -31,4 +31,6 @@ model profiles {
   location  String?
   phoneNumber String?
   status    String?
+  avatarUrl String?
+  coverImageUrl String?
 }

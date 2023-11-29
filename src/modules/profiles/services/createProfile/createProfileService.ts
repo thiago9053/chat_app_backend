@@ -12,8 +12,6 @@ import { CreateProfileErrors } from "@modules/profiles/services/createProfile/cr
 import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { ProfilePhoneNumber } from "@modules/profiles/domain/profilePhoneNumber";
 import { ProfileLocation } from "@modules/profiles/domain/profileLocation";
-import { ProfileAvatar } from "@modules/profiles/domain/profileAvatar";
-import { ProfileCoverImage } from "@modules/profiles/domain/profileCoverImage";
 
 export class CreateProfileService implements Service<CreateProfileDTO, Promise<CreateProfileResponse>> {
 	private profileRepo: IProfileRepo;
@@ -48,16 +46,8 @@ export class CreateProfileService implements Service<CreateProfileDTO, Promise<C
 			const signatureOrError = ProfileSignature.create({ signature: "" });
 			const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: "00000000" });
 			const locationOrError = ProfileLocation.create({ location: "" });
-			const avatarOrError = ProfileAvatar.create({ url: "", size: 0 });
-			const coverImageOrError = ProfileCoverImage.create({ url: "", size: 0 });
 
-			const payloadResult = Result.combine([
-				signatureOrError,
-				phoneNumberOrError,
-				locationOrError,
-				avatarOrError,
-				coverImageOrError,
-			]);
+			const payloadResult = Result.combine([signatureOrError, phoneNumberOrError, locationOrError]);
 
 			if (!payloadResult.isSuccess) {
 				return left(Result.fail<void>(payloadResult.getError())) as CreateProfileResponse;
@@ -68,8 +58,8 @@ export class CreateProfileService implements Service<CreateProfileDTO, Promise<C
 				signature: signatureOrError.getValue(),
 				phoneNumber: phoneNumberOrError.getValue(),
 				location: locationOrError.getValue(),
-				avatar: avatarOrError.getValue(),
-				coverImage: coverImageOrError.getValue(),
+				avatar: "",
+				coverImage: "",
 			});
 
 			if (!profileOrError.isSuccess) {

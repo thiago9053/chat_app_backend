@@ -7,16 +7,14 @@ import { ProfileLocation } from "./profileLocation";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { Result } from "@shared/core/Result";
 import { Validate } from "@shared/core/Validate";
-import { ProfileAvatar } from "@modules/profiles/domain/profileAvatar";
-import { ProfileCoverImage } from "@modules/profiles/domain/profileCoverImage";
 
 interface ProfileProps {
 	signature: ProfileSignature;
 	phoneNumber: ProfilePhoneNumber;
 	userId: UserId;
 	location: ProfileLocation;
-	avatar: ProfileAvatar;
-	coverImage: ProfileCoverImage;
+	avatar: string;
+	coverImage: string;
 }
 
 export class Profile extends AggregateRoot<ProfileProps> {
@@ -44,11 +42,11 @@ export class Profile extends AggregateRoot<ProfileProps> {
 		return this.props.location;
 	}
 
-	get avatar(): ProfileAvatar {
+	get avatar(): string {
 		return this.props.avatar;
 	}
 
-	get coverImage(): ProfileCoverImage {
+	get coverImage(): string {
 		return this.props.coverImage;
 	}
 

@@ -5,8 +5,6 @@ import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { UserId } from "@modules/users/domain/userId";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { ProfileDTO } from "@modules/profiles/dtos/profileDTO";
-import { ProfileAvatar } from "@modules/profiles/domain/profileAvatar";
-import { ProfileCoverImage } from "@modules/profiles/domain/profileCoverImage";
 
 export class ProfileAdapter {
 	public static toDTO(profile: Profile): ProfileDTO {
@@ -14,6 +12,8 @@ export class ProfileAdapter {
 			location: profile.location.value,
 			signature: profile.signature.value,
 			phoneNumner: profile.phoneNumber.value,
+			avatarUrl: profile.avatar,
+			coverImageUrl: profile.coverImage,
 		};
 	}
 
@@ -23,8 +23,6 @@ export class ProfileAdapter {
 		const signatureOrError = ProfileSignature.create({ signature: raw.signature });
 		const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: raw.phoneNumber });
 		const locationOrError = ProfileLocation.create({ location: raw.location });
-		const avatarOrError = ProfileAvatar.create({ url: raw.url, size: raw.size || 0 });
-		const coverImageOrError = ProfileCoverImage.create({ url: raw.url, size: raw.size || 0 });
 
 		const profileOrError = Profile.create(
 			{
@@ -32,8 +30,8 @@ export class ProfileAdapter {
 				signature: signatureOrError.getValue(),
 				phoneNumber: phoneNumberOrError.getValue(),
 				location: locationOrError.getValue(),
-				avatar: avatarOrError.getValue(),
-				coverImage: coverImageOrError.getValue(),
+				avatar: raw.avatarUrl,
+				coverImage: raw.coverImageUrl,
 			},
 			new UniqueEntityID(raw.profileId)
 		);
