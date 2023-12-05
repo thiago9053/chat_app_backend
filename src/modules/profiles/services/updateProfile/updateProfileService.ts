@@ -11,6 +11,7 @@ import { UpdateProfileErrors } from "@modules/profiles/services/updateProfile/up
 import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { ProfilePhoneNumber } from "@modules/profiles/domain/profilePhoneNumber";
 import { ProfileLocation } from "@modules/profiles/domain/profileLocation";
+import { ProfileName } from "@modules/profiles/domain/profileName";
 
 export class UpdateProfileService implements Service<UpdateProfileDTO, Promise<UpdateProfileResponse>> {
 	private profileRepo: IProfileRepo;
@@ -53,6 +54,14 @@ export class UpdateProfileService implements Service<UpdateProfileDTO, Promise<U
 						return left(Result.fail<void>(locationOrError.getError().toString()));
 					}
 					await this.profileRepo.updateProfile(user.userId, field, locationOrError.getValue().value);
+					break;
+				}
+				case "name": {
+					const nameOrError = ProfileName.create({ name: data });
+					if (!nameOrError.isSuccess) {
+						return left(Result.fail<void>(nameOrError.getError().toString()));
+					}
+					await this.profileRepo.updateProfile(user.userId, field, nameOrError.getValue().value);
 					break;
 				}
 				case "avatarUrl":

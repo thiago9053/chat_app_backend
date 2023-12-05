@@ -5,6 +5,7 @@ import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { UserId } from "@modules/users/domain/userId";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { ProfileDTO } from "@modules/profiles/dtos/profileDTO";
+import { ProfileName } from "@modules/profiles/domain/profileName";
 
 export class ProfileAdapter {
 	public static toDTO(profile: Profile): ProfileDTO {
@@ -14,6 +15,7 @@ export class ProfileAdapter {
 			phoneNumner: profile.phoneNumber.value,
 			avatarUrl: profile.avatar,
 			coverImageUrl: profile.coverImage,
+			name: profile.name.value,
 		};
 	}
 
@@ -23,6 +25,7 @@ export class ProfileAdapter {
 		const signatureOrError = ProfileSignature.create({ signature: raw.signature });
 		const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: raw.phoneNumber });
 		const locationOrError = ProfileLocation.create({ location: raw.location });
+		const nameOrError = ProfileName.create({ name: raw.name });
 
 		const profileOrError = Profile.create(
 			{
@@ -32,6 +35,7 @@ export class ProfileAdapter {
 				location: locationOrError.getValue(),
 				avatar: raw.avatarUrl,
 				coverImage: raw.coverImageUrl,
+				name: nameOrError.getValue(),
 			},
 			new UniqueEntityID(raw.profileId)
 		);
@@ -48,6 +52,9 @@ export class ProfileAdapter {
 			signature: profile.signature.value,
 			phoneNumber: profile.phoneNumber.value,
 			location: profile.location.value,
+			name: profile.name.value,
+			avatar: profile.avatar,
+			coverImage: profile.coverImage,
 		};
 	}
 }

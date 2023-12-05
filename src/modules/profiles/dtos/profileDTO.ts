@@ -4,4 +4,5 @@ export interface ProfileDTO {
 	signature?: string;
 	avatarUrl?: string;
 	coverImageUrl?: string;
+	name?: string;
 }

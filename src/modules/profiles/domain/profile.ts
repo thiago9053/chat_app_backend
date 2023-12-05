@@ -7,12 +7,14 @@ import { ProfileLocation } from "./profileLocation";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { Result } from "@shared/core/Result";
 import { Validate } from "@shared/core/Validate";
+import { ProfileName } from "./profileName";
 
 interface ProfileProps {
 	signature: ProfileSignature;
 	phoneNumber: ProfilePhoneNumber;
 	userId: UserId;
 	location: ProfileLocation;
+	name: ProfileName;
 	avatar: string;
 	coverImage: string;
 }
@@ -48,6 +50,10 @@ export class Profile extends AggregateRoot<ProfileProps> {
 
 	get coverImage(): string {
 		return this.props.coverImage;
+	}
+
+	get name(): ProfileName {
+		return this.props.name;
 	}
 
 	public static create(props: ProfileProps, id?: UniqueEntityID): Result<Profile> {

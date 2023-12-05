@@ -12,6 +12,7 @@ import { CreateProfileErrors } from "@modules/profiles/services/createProfile/cr
 import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { ProfilePhoneNumber } from "@modules/profiles/domain/profilePhoneNumber";
 import { ProfileLocation } from "@modules/profiles/domain/profileLocation";
+import { ProfileName } from "@modules/profiles/domain/profileName";
 
 export class CreateProfileService implements Service<CreateProfileDTO, Promise<CreateProfileResponse>> {
 	private profileRepo: IProfileRepo;
@@ -46,6 +47,7 @@ export class CreateProfileService implements Service<CreateProfileDTO, Promise<C
 			const signatureOrError = ProfileSignature.create({ signature: "" });
 			const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: "00000000" });
 			const locationOrError = ProfileLocation.create({ location: "" });
+			const nameOrError = ProfileName.create({ name: "" });
 
 			const payloadResult = Result.combine([signatureOrError, phoneNumberOrError, locationOrError]);
 
@@ -60,6 +62,7 @@ export class CreateProfileService implements Service<CreateProfileDTO, Promise<C
 				location: locationOrError.getValue(),
 				avatar: "",
 				coverImage: "",
+				name: nameOrError.getValue(),
 			});
 
 			if (!profileOrError.isSuccess) {

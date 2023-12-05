@@ -33,4 +33,5 @@ model profiles {
   status    String?
   avatarUrl String?
   coverImageUrl String?
+  name String?
 }
