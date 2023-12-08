@@ -1,34 +1,34 @@
-import { UpdateProfileDTO } from "@modules/profiles/services/updateProfile/updateProfileDTO";
-import { UpdateProfileService } from "@modules/profiles/services/updateProfile/updateProfileService";
 import { BaseController } from "@shared/infra/controller/BaseController";
 import { DecodedExpressRequest } from "@modules/auth/models/decodedRequest";
 import { Response } from "express";
-import { UpdateProfileErrors } from "@modules/profiles/services/updateProfile/updateProfileError";
+import { AddContactService } from "./addContactService";
+import { AddContactDTO } from "./addContactDTO";
+import { AddContactErrors } from "./addContactErrors";
 
-export class UpdateProfileController extends BaseController {
-	private service: UpdateProfileService;
+export class AddContactController extends BaseController {
+	private service: AddContactService;
 
-	constructor(service: UpdateProfileService) {
+	constructor(service: AddContactService) {
 		super();
 		this.service = service;
 	}
 
 	async executeImpl(req: DecodedExpressRequest, res: Response): Promise<any> {
 		const { userId } = req.decoded;
-		const dto: Omit<UpdateProfileDTO, "userId"> = req.body as Omit<UpdateProfileDTO, "userId">;
+		const dto: Omit<AddContactDTO, "userId"> = req.body as Omit<AddContactDTO, "userId">;
 
 		try {
 			const result = await this.service.execute({ ...dto, userId });
 			if (result.isLeft()) {
 				const error = result.value;
 				switch (error.constructor) {
-					case UpdateProfileErrors.UserDoesntExistError:
+					case AddContactErrors.UserDoesntExistError:
 						return this.notFound(res, error.getError().message);
-					case UpdateProfileErrors.PhoneNumberAlreadyExistsError:
-						return this.conflict(res, error.getError().message);
-					case UpdateProfileErrors.FieldDoesntExistsError:
+					case AddContactErrors.RequestingDoesntExistError:
 						return this.notFound(res, error.getError().message);
-					case UpdateProfileErrors.ProfileAlreadyExistsError:
+					case AddContactErrors.RequestDoesntExistsError:
+						return this.notFound(res, error.getError().message);
+					case AddContactErrors.ContactAlreadyAdded:
 						return this.conflict(res, error.getError().message);
 					default:
 						return this.fail(res, error.getError());

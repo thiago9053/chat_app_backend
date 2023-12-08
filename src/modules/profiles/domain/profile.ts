@@ -17,6 +17,8 @@ interface ProfileProps {
 	name: ProfileName;
 	avatar: string;
 	coverImage: string;
+	contactIds?: string[];
+	totalContacts?: number;
 }
 
 export class Profile extends AggregateRoot<ProfileProps> {
@@ -54,6 +56,10 @@ export class Profile extends AggregateRoot<ProfileProps> {
 
 	get name(): ProfileName {
 		return this.props.name;
+	}
+
+	get contactIds(): string[] | undefined {
+		return this.props.contactIds;
 	}
 
 	public static create(props: ProfileProps, id?: UniqueEntityID): Result<Profile> {

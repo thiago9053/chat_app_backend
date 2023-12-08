@@ -1,4 +1,4 @@
-import { UpdateProfileErrors } from "@modules/profiles/services/updateProfile/updateProfileError";
+import { UpdateProfileErrors } from "@modules/profiles/services/profiles/updateProfile/updateProfileError";
 import { Result } from "@shared/core/Result";
 import { Either } from "@shared/core/types/Either";
 

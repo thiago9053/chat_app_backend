@@ -3,7 +3,7 @@ import { BaseController } from "@shared/infra/controller/BaseController";
 import { DecodedExpressRequest } from "@modules/auth/models/decodedRequest";
 import { Response } from "express";
 import { UserAdapter } from "@modules/users/adapters/userAdapter";
-import { GetProfileByUserNameService } from "@modules/profiles/services/getProfileByUserName/getProfileByUserNameService";
+import { GetProfileByUserNameService } from "@modules/profiles/services/profiles/getProfileByUserName/getProfileByUserNameService";
 import { ProfileAdapter } from "@modules/profiles/adapters/profileAdapter";
 
 export class GetCurrentUserController extends BaseController {

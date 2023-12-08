@@ -7,7 +7,7 @@ import { AppError } from "@shared/core/AppError";
 import { Result } from "@shared/core/Result";
 import { IUserRepo } from "@modules/users/repos/userRepo";
 import { User } from "@modules/users/domain/user";
-import { UpdateProfileErrors } from "@modules/profiles/services/updateProfile/updateProfileError";
+import { UpdateProfileErrors } from "@modules/profiles/services/profiles/updateProfile/updateProfileError";
 import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { ProfilePhoneNumber } from "@modules/profiles/domain/profilePhoneNumber";
 import { ProfileLocation } from "@modules/profiles/domain/profileLocation";

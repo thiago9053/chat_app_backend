@@ -20,13 +20,12 @@ export class ProfileAdapter {
 	}
 
 	public static toDomain(raw: any): Profile {
-		console.log(raw);
 		const userIdOrError = UserId.create(new UniqueEntityID(raw.userId));
 		const signatureOrError = ProfileSignature.create({ signature: raw.signature });
 		const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: raw.phoneNumber });
 		const locationOrError = ProfileLocation.create({ location: raw.location });
 		const nameOrError = ProfileName.create({ name: raw.name });
-
+		console.log(raw);
 		const profileOrError = Profile.create(
 			{
 				userId: userIdOrError.getValue(),
@@ -36,6 +35,7 @@ export class ProfileAdapter {
 				avatar: raw.avatarUrl,
 				coverImage: raw.coverImageUrl,
 				name: nameOrError.getValue(),
+				contactIds: raw.contactIds,
 			},
 			new UniqueEntityID(raw.profileId)
 		);
@@ -53,8 +53,9 @@ export class ProfileAdapter {
 			phoneNumber: profile.phoneNumber.value,
 			location: profile.location.value,
 			name: profile.name.value,
-			avatar: profile.avatar,
-			coverImage: profile.coverImage,
+			avatarUrl: profile.avatar,
+			coverImageUrl: profile.coverImage,
+			contactIds: profile.contactIds,
 		};
 	}
 }

@@ -1,4 +1,4 @@
-import { CreateProfileResponse } from "@modules/profiles/services/createProfile/createProfileResponse";
+import { CreateProfileResponse } from "@modules/profiles/services/profiles/createProfile/createProfileResponse";
 import { CreateProfileDTO } from "./createProfileDTO";
 import { Service } from "@shared/core/Service";
 import { IUserRepo } from "@modules/users/repos/userRepo";
@@ -8,7 +8,7 @@ import { Profile } from "@modules/profiles/domain/profile";
 import { left, right } from "@shared/core/types/Either";
 import { AppError } from "@shared/core/AppError";
 import { Result } from "@shared/core/Result";
-import { CreateProfileErrors } from "@modules/profiles/services/createProfile/createProfileErrors";
+import { CreateProfileErrors } from "@modules/profiles/services/profiles/createProfile/createProfileErrors";
 import { ProfileSignature } from "@modules/profiles/domain/profileSignature";
 import { ProfilePhoneNumber } from "@modules/profiles/domain/profilePhoneNumber";
 import { ProfileLocation } from "@modules/profiles/domain/profileLocation";
@@ -63,6 +63,7 @@ export class CreateProfileService implements Service<CreateProfileDTO, Promise<C
 				avatar: "",
 				coverImage: "",
 				name: nameOrError.getValue(),
+				contactIds: [],
 			});
 
 			if (!profileOrError.isSuccess) {

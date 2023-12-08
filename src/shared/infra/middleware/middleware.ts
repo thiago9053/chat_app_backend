@@ -57,7 +57,7 @@ export class Middleware {
 				// See if the token was found
 				const { username } = decoded;
 				const tokens = await this.authService.getTokens(username);
-				console.log(tokens, username);
+
 				// if the token was found, just continue the request.
 				if (tokens.length !== 0) {
 					req.decoded = decoded;

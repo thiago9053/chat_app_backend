@@ -42,7 +42,6 @@ export class Validate {
 	}
 
 	public static againstNullOrUndefined(argument: any, argumentName: string): Result<ValidateResponse> {
-		console.log(argument, argumentName);
 		if (argument === null || argument === undefined) {
 			return Result.fail<ValidateResponse>(`Field ${argumentName} is null or undefined`);
 		} else {

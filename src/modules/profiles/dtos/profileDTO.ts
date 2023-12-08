@@ -5,4 +5,5 @@ export interface ProfileDTO {
 	avatarUrl?: string;
 	coverImageUrl?: string;
 	name?: string;
+	contacts?: ProfileDTO[];
 }

@@ -1,8 +1,8 @@
 import { IHandle } from "@shared/domain/events/IHandle";
 import { DomainEvents } from "@shared/domain/events/DomainEvents";
 import { UserCreated } from "@modules/users/domain/events/userCreated";
-import { CreateProfileService } from "@modules/profiles/services/createProfile/createProfileService";
-import { CreateProfileDTO } from "@modules/profiles/services/createProfile/createProfileDTO";
+import { CreateProfileService } from "@modules/profiles/services/profiles/createProfile/createProfileService";
+import { CreateProfileDTO } from "@modules/profiles/services/profiles/createProfile/createProfileDTO";
 
 export class AfterUserCreated implements IHandle<UserCreated> {
 	private createProfileService: CreateProfileService;
@@ -18,9 +18,7 @@ export class AfterUserCreated implements IHandle<UserCreated> {
 	}
 
 	private async onUserCreated(event: UserCreated): Promise<void> {
-		console.log("b");
 		const { user } = event;
-		console.log(user.userId.getStringValue());
 		try {
 			const result = await this.createProfileService.execute({
 				userId: user.userId.getStringValue(),

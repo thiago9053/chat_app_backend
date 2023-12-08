@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum RequestStatus {
+  Pending
+  Accepted
+  Rejected
+}
+
 model users {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String   @unique
@@ -34,4 +40,14 @@ model profiles {
   avatarUrl String?
   coverImageUrl String?
   name String?
+  contactIds String[]
+}
+
+model requests {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  requestId String @unique
+  requestedBy String
+  requesting String
+  createdAt DateTime
+  status RequestStatus @default(Pending)
 }
