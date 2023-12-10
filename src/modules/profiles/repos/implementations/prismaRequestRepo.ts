@@ -68,4 +68,18 @@ export class PrismaRequestRepo implements IRequestRepo {
 			},
 		});
 	}
+
+	async list(userId: string): Promise<Request[]> {
+		const requests = await this.models.requests.findMany({
+			where: {
+				requesting: userId,
+			},
+		});
+		let result: Request[] = [];
+		for (let i = 0; i < requests.length; i++) {
+			const domain = await RequestAdapter.toDomain(requests[i]);
+			result.push(domain);
+		}
+		return result;
+	}
 }

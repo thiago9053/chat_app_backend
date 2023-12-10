@@ -1,0 +1,260 @@
+Date : 2023-12-10 20:46:26
+Directory : d:\workspace\pet_project_wp\chat_app_backend\src
+Total : 169 files,  3830 codes, 29 comments, 865 blanks, all 4724 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| TypeScript |        169 |      3,830 |         29 |        865 |      4,724 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                     | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                        |        169 |      3,830 |         29 |        865 |      4,724 |
+| . (Files)                                                                                                                                |          1 |          2 |          0 |          1 |          3 |
+| config                                                                                                                                   |          2 |         20 |          0 |          4 |         24 |
+| modules                                                                                                                                  |        143 |      3,245 |         14 |        706 |      3,965 |
+| modules\auth                                                                                                                             |          7 |        175 |          0 |         50 |        225 |
+| modules\auth\domain                                                                                                                      |          1 |          9 |          0 |          4 |         13 |
+| modules\auth\models                                                                                                                      |          1 |          5 |          0 |          2 |          7 |
+| modules\auth\redis                                                                                                                       |          5 |        161 |          0 |         44 |        205 |
+| modules\profiles                                                                                                                         |         79 |      1,787 |          3 |        360 |      2,150 |
+| modules\profiles\adapters                                                                                                                |          2 |         82 |          0 |         12 |         94 |
+| modules\profiles\domain                                                                                                                  |         10 |        298 |          0 |         79 |        377 |
+| modules\profiles\domain (Files)                                                                                                          |          8 |        270 |          0 |         71 |        341 |
+| modules\profiles\domain\events                                                                                                           |          2 |         28 |          0 |          8 |         36 |
+| modules\profiles\dtos                                                                                                                    |          1 |          9 |          0 |          1 |         10 |
+| modules\profiles\repos                                                                                                                   |          5 |        258 |          0 |         37 |        295 |
+| modules\profiles\repos (Files)                                                                                                           |          3 |         29 |          0 |          7 |         36 |
+| modules\profiles\repos\implementations                                                                                                   |          2 |        229 |          0 |         30 |        259 |
+| modules\profiles\router                                                                                                                  |          2 |         26 |          0 |         11 |         37 |
+| modules\profiles\services                                                                                                                |         55 |      1,009 |          0 |        199 |      1,208 |
+| modules\profiles\services\contacts                                                                                                       |         11 |        193 |          0 |         41 |        234 |
+| modules\profiles\services\contacts\addContact                                                                                            |          5 |         85 |          0 |         18 |        103 |
+| modules\profiles\services\contacts\getCurrentContacts                                                                                    |          6 |        108 |          0 |         23 |        131 |
+| modules\profiles\services\profiles                                                                                                       |         22 |        423 |          0 |         83 |        506 |
+| modules\profiles\services\profiles\createProfile                                                                                         |          5 |        105 |          0 |         23 |        128 |
+| modules\profiles\services\profiles\findProfile                                                                                           |          6 |         75 |          0 |         20 |         95 |
+| modules\profiles\services\profiles\getProfileByUserName                                                                                  |          5 |         74 |          0 |         21 |         95 |
+| modules\profiles\services\profiles\updateProfile                                                                                         |          6 |        169 |          0 |         19 |        188 |
+| modules\profiles\services\requests                                                                                                       |         22 |        393 |          0 |         75 |        468 |
+| modules\profiles\services\requests\createRequest                                                                                         |          6 |        146 |          0 |         28 |        174 |
+| modules\profiles\services\requests\deleteRequest                                                                                         |          5 |         72 |          0 |         15 |         87 |
+| modules\profiles\services\requests\handleRequest                                                                                         |          6 |        175 |          0 |         27 |        202 |
+| modules\profiles\services\requests\listRequest                                                                                           |          5 |          0 |          0 |          5 |          5 |
+| modules\profiles\subscriptions                                                                                                           |          4 |        105 |          3 |         21 |        129 |
+| modules\users                                                                                                                            |         57 |      1,283 |         11 |        296 |      1,590 |
+| modules\users\adapters                                                                                                                   |          1 |         51 |          0 |          8 |         59 |
+| modules\users\domain                                                                                                                     |          7 |        273 |          6 |         65 |        344 |
+| modules\users\domain (Files)                                                                                                             |          6 |        259 |          6 |         61 |        326 |
+| modules\users\domain\events                                                                                                              |          1 |         14 |          0 |          4 |         18 |
+| modules\users\dtos                                                                                                                       |          1 |          6 |          0 |          1 |          7 |
+| modules\users\repos                                                                                                                      |          3 |        101 |          0 |         15 |        116 |
+| modules\users\repos (Files)                                                                                                              |          2 |         18 |          0 |          5 |         23 |
+| modules\users\repos\implementations                                                                                                      |          1 |         83 |          0 |         10 |         93 |
+| modules\users\router                                                                                                                     |          1 |         24 |          0 |         12 |         36 |
+| modules\users\services                                                                                                                   |         44 |        828 |          5 |        195 |      1,028 |
+| modules\users\services\changeEmail                                                                                                       |          6 |        113 |          0 |         29 |        142 |
+| modules\users\services\changePassword                                                                                                    |          6 |        110 |          0 |         23 |        133 |
+| modules\users\services\createUser                                                                                                        |          6 |        129 |          0 |         31 |        160 |
+| modules\users\services\getCurrentUser                                                                                                    |          2 |         42 |          0 |          9 |         51 |
+| modules\users\services\getUserByUserName                                                                                                 |          6 |         89 |          0 |         23 |        112 |
+| modules\users\services\login                                                                                                             |          6 |        140 |          0 |         33 |        173 |
+| modules\users\services\logout                                                                                                            |          6 |         82 |          0 |         20 |        102 |
+| modules\users\services\refreshAccessToken                                                                                                |          6 |        123 |          5 |         27 |        155 |
+| shared                                                                                                                                   |         23 |        563 |         15 |        154 |        732 |
+| shared\core                                                                                                                              |          7 |        157 |          0 |         41 |        198 |
+| shared\core (Files)                                                                                                                      |          5 |        122 |          0 |         29 |        151 |
+| shared\core\types                                                                                                                        |          2 |         35 |          0 |         12 |         47 |
+| shared\domain                                                                                                                            |          9 |        232 |          9 |         66 |        307 |
+| shared\domain (Files)                                                                                                                    |          6 |        165 |          7 |         47 |        219 |
+| shared\domain\events                                                                                                                     |          3 |         67 |          2 |         19 |         88 |
+| shared\infra                                                                                                                             |          7 |        174 |          6 |         47 |        227 |
+| shared\infra (Files)                                                                                                                     |          1 |         21 |          0 |          7 |         28 |
+| shared\infra\controller                                                                                                                  |          1 |         56 |          0 |         15 |         71 |
+| shared\infra\database                                                                                                                    |          2 |         25 |          0 |          5 |         30 |
+| shared\infra\database\prisma                                                                                                             |          2 |         25 |          0 |          5 |         30 |
+| shared\infra\database\prisma (Files)                                                                                                     |          1 |          2 |          0 |          2 |          4 |
+| shared\infra\database\prisma\hooks                                                                                                       |          1 |         23 |          0 |          3 |         26 |
+| shared\infra\middleware                                                                                                                  |          2 |         60 |          6 |         15 |         81 |
+| shared\infra\router                                                                                                                      |          1 |         12 |          0 |          5 |         17 |
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                 | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\workspace\pet_project_wp\chat_app_backend\src\config\config.ts                                                                        | TypeScript |         11 |          0 |          3 |         14 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\config\interface.ts                                                                     | TypeScript |          9 |          0 |          1 |         10 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\index.ts                                                                                | TypeScript |          2 |          0 |          1 |          3 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\domain\jwt.ts                                                              | TypeScript |          9 |          0 |          4 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\models\decodedRequest.ts                                                   | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\redis\abstractRedis.ts                                                     | TypeScript |         43 |          0 |         12 |         55 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\redis\authService.ts                                                       | TypeScript |         12 |          0 |          2 |         14 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\redis\index.ts                                                             | TypeScript |          3 |          0 |          2 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\redis\redisAuthService.ts                                                  | TypeScript |         94 |          0 |         24 |        118 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\auth\redis\redisConnection.ts                                                   | TypeScript |          9 |          0 |          4 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\adapters\profileAdapter.ts                                             | TypeScript |         55 |          0 |          7 |         62 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\adapters\requestAdapter.ts                                             | TypeScript |         27 |          0 |          5 |         32 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\events\requestAccepted.ts                                       | TypeScript |         14 |          0 |          4 |         18 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\events\requestRejected.ts                                       | TypeScript |         14 |          0 |          4 |         18 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\profile.ts                                                      | TypeScript |         61 |          0 |         14 |         75 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\profileId.ts                                                    | TypeScript |         22 |          0 |          5 |         27 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\profileLocation.ts                                              | TypeScript |         22 |          0 |          7 |         29 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\profileName.ts                                                  | TypeScript |         22 |          0 |          7 |         29 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\profilePhoneNumber.ts                                           | TypeScript |         43 |          0 |         12 |         55 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\profileSignature.ts                                             | TypeScript |         22 |          0 |          7 |         29 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\request.ts                                                      | TypeScript |         56 |          0 |         14 |         70 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\domain\requestId.ts                                                    | TypeScript |         22 |          0 |          5 |         27 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\dtos\profileDTO.ts                                                     | TypeScript |          9 |          0 |          1 |         10 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\repos\implementations\prismaProfileRepo.ts                             | TypeScript |        152 |          0 |         21 |        173 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\repos\implementations\prismaRequestRepo.ts                             | TypeScript |         77 |          0 |          9 |         86 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\repos\index.ts                                                         | TypeScript |          6 |          0 |          3 |          9 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\repos\profileRepo.ts                                                   | TypeScript |         13 |          0 |          2 |         15 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\repos\requestRepo.ts                                                   | TypeScript |         10 |          0 |          2 |         12 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\router\profile.ts                                                      | TypeScript |         14 |          0 |          6 |         20 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\router\request.ts                                                      | TypeScript |         12 |          0 |          5 |         17 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\addContact\addContactDTO.ts                          | TypeScript |          4 |          0 |          1 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\addContact\addContactErrors.ts                       | TypeScript |         32 |          0 |          5 |         37 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\addContact\addContactResponse.ts                     | TypeScript |         12 |          0 |          2 |         14 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\addContact\addContactService.ts                      | TypeScript |         34 |          0 |          8 |         42 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\addContact\index.ts                                  | TypeScript |          3 |          0 |          2 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\getCurrentContacts\getCurrentContactsController.ts   | TypeScript |         23 |          0 |          7 |         30 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\getCurrentContacts\getCurrentContactsDTO.ts          | TypeScript |         17 |          0 |          3 |         20 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\getCurrentContacts\getCurrentContactsErrors.ts       | TypeScript |         11 |          0 |          2 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\getCurrentContacts\getCurrentContactsResponse.ts     | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\getCurrentContacts\getCurrentContactsService.ts      | TypeScript |         46 |          0 |          7 |         53 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\contacts\getCurrentContacts\index.ts                          | TypeScript |          6 |          0 |          2 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\createProfile\createProfileDTO.ts                    | TypeScript |          3 |          0 |          1 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\createProfile\createProfileErrors.ts                 | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\createProfile\createProfileResponse.ts               | TypeScript |         11 |          0 |          2 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\createProfile\createProfileService.ts                | TypeScript |         68 |          0 |         14 |         82 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\createProfile\index.ts                               | TypeScript |          5 |          0 |          3 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\findProfile\findProfileController.ts                 | TypeScript |         24 |          0 |          7 |         31 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\findProfile\findProfileDTO.ts                        | TypeScript |         12 |          0 |          3 |         15 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\findProfile\findProfileErrors.ts                     | TypeScript |          0 |          0 |          1 |          1 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\findProfile\findProfileResponse.ts                   | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\findProfile\findProfileService.ts                    | TypeScript |         29 |          0 |          5 |         34 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\findProfile\index.ts                                 | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\getProfileByUserName\getProfileByUSerNameError.ts    | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\getProfileByUserName\getProfileByUserNameDTO.ts      | TypeScript |          3 |          0 |          1 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\getProfileByUserName\getProfileByUserNameResponse.ts | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\getProfileByUserName\getProfileByUserNameService.ts  | TypeScript |         43 |          0 |         12 |         55 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\getProfileByUserName\index.ts                        | TypeScript |          5 |          0 |          3 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\updateProfile\index.ts                               | TypeScript |          6 |          0 |          2 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\updateProfile\updateProfileController.ts             | TypeScript |         39 |          0 |          5 |         44 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\updateProfile\updateProfileDTO.ts                    | TypeScript |          5 |          0 |          1 |          6 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\updateProfile\updateProfileError.ts                  | TypeScript |         32 |          0 |          5 |         37 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\updateProfile\updateProfileResponse.ts               | TypeScript |         10 |          0 |          2 |         12 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\profiles\updateProfile\updateProfileService.ts                | TypeScript |         77 |          0 |          4 |         81 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\createRequest\createRequestController.ts             | TypeScript |         35 |          0 |          7 |         42 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\createRequest\createRequestDTO.ts                    | TypeScript |          4 |          0 |          1 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\createRequest\createRequestErrors.ts                 | TypeScript |         25 |          0 |          4 |         29 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\createRequest\createRequestResponse.ts               | TypeScript |         12 |          0 |          2 |         14 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\createRequest\createRequestService.ts                | TypeScript |         64 |          0 |         12 |         76 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\createRequest\index.ts                               | TypeScript |          6 |          0 |          2 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\deleteRequest\deleteRequestDTO.ts                    | TypeScript |          3 |          0 |          1 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\deleteRequest\deleteRequestErrors.ts                 | TypeScript |         25 |          0 |          4 |         29 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\deleteRequest\deleteRequestResponse.ts               | TypeScript |          8 |          0 |          2 |         10 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\deleteRequest\deleteRequestService.ts                | TypeScript |         33 |          0 |          6 |         39 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\deleteRequest\index.ts                               | TypeScript |          3 |          0 |          2 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\handleRequest\handleRequestController.ts             | TypeScript |         39 |          0 |          5 |         44 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\handleRequest\handleRequestDTO.ts                    | TypeScript |          6 |          0 |          2 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\handleRequest\handleRequestErrors.ts                 | TypeScript |         39 |          0 |          6 |         45 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\handleRequest\handleRequestResponse.ts               | TypeScript |         13 |          0 |          2 |         15 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\handleRequest\handleRequestService.ts                | TypeScript |         72 |          0 |         10 |         82 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\handleRequest\index.ts                               | TypeScript |          6 |          0 |          2 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\listRequest\index.ts                                 | TypeScript |          0 |          0 |          1 |          1 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\listRequest\listRequestDTO.ts                        | TypeScript |          0 |          0 |          1 |          1 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\listRequest\listRequestErrors.ts                     | TypeScript |          0 |          0 |          1 |          1 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\listRequest\listRequestResponse.ts                   | TypeScript |          0 |          0 |          1 |          1 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\services\requests\listRequest\listRequestService.ts                    | TypeScript |          0 |          0 |          1 |          1 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\subscriptions\afterAcceptRequest.ts                                    | TypeScript |         37 |          1 |          7 |         45 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\subscriptions\afterRejectRequest.ts                                    | TypeScript |         29 |          1 |          7 |         37 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\subscriptions\afterUserCreated.ts                                      | TypeScript |         30 |          1 |          5 |         36 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\profiles\subscriptions\index.ts                                                 | TypeScript |          9 |          0 |          2 |         11 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\adapters\userAdapter.ts                                                   | TypeScript |         51 |          0 |          8 |         59 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\events\userCreated.ts                                              | TypeScript |         14 |          0 |          4 |         18 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\jwt.ts                                                             | TypeScript |         10 |          0 |          4 |         14 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\user.ts                                                            | TypeScript |         87 |          2 |         20 |        109 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\userEmail.ts                                                       | TypeScript |         27 |          0 |          7 |         34 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\userId.ts                                                          | TypeScript |         22 |          0 |          5 |         27 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\userName.ts                                                        | TypeScript |         35 |          0 |         10 |         45 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\domain\userPassword.ts                                                    | TypeScript |         78 |          4 |         15 |         97 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\dtos\userDTO.ts                                                           | TypeScript |          6 |          0 |          1 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\repos\implementations\prismaUserRepo.ts                                   | TypeScript |         83 |          0 |         10 |         93 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\repos\index.ts                                                            | TypeScript |          4 |          0 |          3 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\repos\userRepo.ts                                                         | TypeScript |         14 |          0 |          2 |         16 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\router\user.ts                                                            | TypeScript |         24 |          0 |         12 |         36 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changeEmail\changeEmailController.ts                             | TypeScript |         35 |          0 |          6 |         41 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changeEmail\changeEmailDTO.ts                                    | TypeScript |          4 |          0 |          1 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changeEmail\changeEmailErrors.ts                                 | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changeEmail\changeEmailResponse.ts                               | TypeScript |          8 |          0 |          2 |         10 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changeEmail\changeEmailService.ts                                | TypeScript |         42 |          0 |         14 |         56 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changeEmail\index.ts                                             | TypeScript |          6 |          0 |          3 |          9 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changePassword\changePasswordController.ts                       | TypeScript |         35 |          0 |          6 |         41 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changePassword\changePasswordDTO.ts                              | TypeScript |          4 |          0 |          1 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changePassword\changePasswordErrors.ts                           | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changePassword\changePasswordResponse.ts                         | TypeScript |          8 |          0 |          2 |         10 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changePassword\changePasswordService.ts                          | TypeScript |         39 |          0 |          8 |         47 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\changePassword\index.ts                                          | TypeScript |          6 |          0 |          3 |          9 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\createUser\createUserController.ts                               | TypeScript |         33 |          0 |          7 |         40 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\createUser\createUserDTO.ts                                      | TypeScript |          5 |          0 |          1 |          6 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\createUser\createUserErrors.ts                                   | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\createUser\createUserResponse.ts                                 | TypeScript |         11 |          0 |          2 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\createUser\createUserService.ts                                  | TypeScript |         56 |          0 |         15 |         71 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\createUser\index.ts                                              | TypeScript |          6 |          0 |          3 |          9 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getCurrentUser\getCurrentUserController.ts                       | TypeScript |         37 |          0 |          6 |         43 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getCurrentUser\index.ts                                          | TypeScript |          5 |          0 |          3 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getUserByUserName\getUserByUserNameController.ts                 | TypeScript |         32 |          0 |          7 |         39 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getUserByUserName\getUserByUserNameDTO.ts                        | TypeScript |          3 |          0 |          1 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getUserByUserName\getUserByUserNameError.ts                      | TypeScript |         11 |          0 |          2 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getUserByUserName\getUserByUserNameResponse.ts                   | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getUserByUserName\getUserByUserNameService.ts                    | TypeScript |         33 |          0 |          9 |         42 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\getUserByUserName\index.ts                                       | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\login\index.ts                                                   | TypeScript |          7 |          0 |          4 |         11 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\login\loginController.ts                                         | TypeScript |         36 |          0 |          6 |         42 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\login\loginDTO.ts                                                | TypeScript |          4 |          0 |          1 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\login\loginErrors.ts                                             | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\login\loginResponse.ts                                           | TypeScript |         13 |          0 |          3 |         16 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\login\loginService.ts                                            | TypeScript |         62 |          0 |         16 |         78 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\logout\index.ts                                                  | TypeScript |          6 |          0 |          2 |          8 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\logout\logoutController.ts                                       | TypeScript |         24 |          0 |          6 |         30 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\logout\logoutDTO.ts                                              | TypeScript |          3 |          0 |          1 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\logout\logoutError.ts                                            | TypeScript |         11 |          0 |          2 |         13 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\logout\logoutResponse.ts                                         | TypeScript |          4 |          0 |          2 |          6 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\logout\logoutService.ts                                          | TypeScript |         34 |          0 |          7 |         41 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\refreshAccessToken\index.ts                                      | TypeScript |          6 |          0 |          3 |          9 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\refreshAccessToken\refreshAccessTokenController.ts               | TypeScript |         39 |          0 |          7 |         46 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\refreshAccessToken\refreshAccessTokenDTO.ts                      | TypeScript |          4 |          0 |          2 |          6 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\refreshAccessToken\refreshAccessTokenErrors.ts                   | TypeScript |         18 |          0 |          3 |         21 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\refreshAccessToken\refreshAccessTokenResponse.ts                 | TypeScript |          9 |          0 |          2 |         11 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\modules\users\services\refreshAccessToken\refreshAccessTokenService.ts                  | TypeScript |         47 |          5 |         10 |         62 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\AppError.ts                                                                 | TypeScript |         17 |          0 |          3 |         20 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\Result.ts                                                                   | TypeScript |         39 |          0 |          9 |         48 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\Service.ts                                                                  | TypeScript |          3 |          0 |          1 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\ServiceError.ts                                                             | TypeScript |          9 |          0 |          3 |         12 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\Validate.ts                                                                 | TypeScript |         54 |          0 |         13 |         67 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\types\Either.ts                                                             | TypeScript |         31 |          0 |         11 |         42 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\core\types\RequireAtLeastOne.ts                                                  | TypeScript |          4 |          0 |          1 |          5 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\AggregateRoot.ts                                                          | TypeScript |         26 |          4 |          7 |         37 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\Entity.ts                                                                 | TypeScript |         24 |          0 |          8 |         32 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\Identifier.ts                                                             | TypeScript |         20 |          3 |          5 |         28 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\UniqueEntityID.ts                                                         | TypeScript |          7 |          0 |          2 |          9 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\ValueObject.ts                                                            | TypeScript |         21 |          0 |          5 |         26 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\WatchedList.ts                                                            | TypeScript |         67 |          0 |         20 |         87 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\events\DomainEvents.ts                                                    | TypeScript |         58 |          1 |         15 |         74 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\events\IDomainEvent.ts                                                    | TypeScript |          5 |          0 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\domain\events\IHandle.ts                                                         | TypeScript |          4 |          1 |          2 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\app.ts                                                                     | TypeScript |         21 |          0 |          7 |         28 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\controller\BaseController.ts                                               | TypeScript |         56 |          0 |         15 |         71 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\database\prisma\hooks\index.ts                                             | TypeScript |         23 |          0 |          3 |         26 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\database\prisma\index.ts                                                   | TypeScript |          2 |          0 |          2 |          4 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\middleware\index.ts                                                        | TypeScript |          4 |          0 |          3 |          7 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\middleware\middleware.ts                                                   | TypeScript |         56 |          6 |         12 |         74 |
+| d:\workspace\pet_project_wp\chat_app_backend\src\shared\infra\router\index.ts                                                            | TypeScript |         12 |          0 |          5 |         17 |
+| Total                                                                                                                                    |            |      3,830 |         29 |        865 |      4,724 |
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

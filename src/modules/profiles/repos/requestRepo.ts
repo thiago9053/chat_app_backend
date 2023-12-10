@@ -7,4 +7,5 @@ export interface IRequestRepo {
 	updateRequest(requestId: RequestId | string, status: RequestStatus): Promise<void>;
 	getRequestByRequetsId(requestId: string): Promise<Request>;
 	delete(requestId: string): Promise<void>;
+	list(userId: string): Promise<Request[]>;
 }
