@@ -41,12 +41,30 @@ export class PrismaRequestRepo implements IRequestRepo {
 		} else {
 			rid = requestId;
 		}
-		await this.models.requests.update({
+		await this.models.requests.updateWithPost({
 			where: {
 				requestId: rid,
 			},
 			data: {
 				status,
+			},
+		});
+	}
+
+	async getRequestByRequetsId(requestId: string): Promise<Request> {
+		const request = await this.models.requests.findUnique({
+			where: {
+				requestId,
+			},
+		});
+		if (!request) throw new Error("Request not found.");
+		return RequestAdapter.toDomain(request);
+	}
+
+	async delete(requestId: string): Promise<void> {
+		await this.models.requests.delete({
+			where: {
+				requestId,
 			},
 		});
 	}

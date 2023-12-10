@@ -86,17 +86,10 @@ export class PrismaProfileRepo implements IProfileRepo {
 		}
 	}
 
-	async pushContact(userId: string | UserId, contactId: string): Promise<void> {
-		let uid: string;
-		if (userId instanceof UserId) {
-			uid = userId.getStringValue();
-		} else {
-			uid = userId;
-		}
-
+	async pushContact(currentProfileId: string, contactId: string): Promise<void> {
 		await this.models.profiles.update({
 			where: {
-				userId: uid,
+				profileId: currentProfileId,
 			},
 			data: {
 				contactIds: {
@@ -104,5 +97,76 @@ export class PrismaProfileRepo implements IProfileRepo {
 				},
 			},
 		});
+	}
+
+	async getContacts(userId: string): Promise<any> {
+		const profile = await this.models.profiles.findUnique({
+			where: { userId },
+		});
+
+		const profiles = await this.models.profiles.findMany({
+			where: {
+				OR: profile?.contactIds.map((id) => ({
+					profileId: id,
+				})),
+			},
+
+			select: {
+				userId: true,
+				location: true,
+				phoneNumber: true,
+				signature: true,
+				avatarUrl: true,
+				coverImageUrl: true,
+				name: true,
+			},
+		});
+
+		const users = await this.models.users.findMany({
+			where: {
+				OR: profiles.map((profile) => ({
+					userId: profile.userId,
+				})),
+			},
+			select: {
+				userId: true,
+				lastLogin: true,
+				username: true,
+				email: true,
+			},
+		});
+
+		return { profiles, users };
+	}
+
+	async findByKeyword(keyword: string): Promise<any> {
+		const profiles = await this.models.profiles.findMany({
+			where: {
+				name: {
+					contains: keyword,
+				},
+			},
+		});
+
+		const users = await this.models.users.findMany({
+			where: {
+				email: {
+					contains: keyword,
+				},
+			},
+		});
+
+		const foundUserIds = profiles.map((profile) => profile.userId).concat(users.map((user) => user.userId));
+
+		const listProfiles = await this.models.profiles.findMany({
+			where: { OR: foundUserIds.map((id) => ({ userId: id })) },
+			select: { avatarUrl: true, name: true, signature: true },
+		});
+		const listUsers = await this.models.users.findMany({
+			where: { OR: foundUserIds.map((id) => ({ userId: id })) },
+			select: { email: true },
+		});
+
+		return { profiles: listProfiles, users: listUsers };
 	}
 }

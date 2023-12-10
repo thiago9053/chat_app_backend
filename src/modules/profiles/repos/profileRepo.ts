@@ -8,5 +8,7 @@ export interface IProfileRepo {
 	getProfileByProfileId(profileId: ProfileId | string): Promise<Profile>;
 	getProfileByUserId(userId: UserId | string): Promise<Profile>;
 	updateProfile(userId: UserId | string, field: string, data: any): Promise<void>;
-	pushContact(userId: UserId | string, contactId: string): Promise<void>;
+	pushContact(currentProfileId: string, contactId: string): Promise<void>;
+	getContacts(userId: string): Promise<any>;
+	findByKeyword(keyword: string): Promise<any>;
 }

@@ -2,10 +2,10 @@ import { ServiceError } from "@shared/core/ServiceError";
 import { Result } from "@shared/core/Result";
 
 export namespace AddContactErrors {
-	export class UserDoesntExistError extends Result<ServiceError> {
-		constructor(baseUserId: string) {
+	export class CurrentProfileDoesntExistError extends Result<ServiceError> {
+		constructor(currentId: string) {
 			super(false, {
-				message: `A user for user id ${baseUserId} doesn't exist or was deleted.`,
+				message: `A user for user id ${currentId} doesn't exist or was deleted.`,
 			} as ServiceError);
 		}
 	}

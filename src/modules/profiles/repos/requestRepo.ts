@@ -5,4 +5,6 @@ export interface IRequestRepo {
 	create(request: Request): Promise<void>;
 	exist(requesting: string, requestedBy: string): Promise<boolean>;
 	updateRequest(requestId: RequestId | string, status: RequestStatus): Promise<void>;
+	getRequestByRequetsId(requestId: string): Promise<Request>;
+	delete(requestId: string): Promise<void>;
 }

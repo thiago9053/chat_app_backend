@@ -11,4 +11,5 @@ export interface IUserRepo {
 	getUserByUserName(userName: UserName | string): Promise<User>;
 	updateEmail(userId: string, email: UserEmail): Promise<void>;
 	updatePassword(userId: string, hasedPassword: string): Promise<void>;
+	updateLastLogin(userId: string): Promise<void>;
 }

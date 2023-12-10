@@ -2,7 +2,6 @@ import { AddContactResponse } from "./addContactResponse";
 import { AddContactDTO } from "./addContactDTO";
 import { Service } from "@shared/core/Service";
 import { IProfileRepo } from "@modules/profiles/repos/profileRepo";
-import { IUserRepo } from "@modules/users/repos/userRepo";
 import { left, right } from "@shared/core/types/Either";
 import { AppError } from "@shared/core/AppError";
 import { Result } from "@shared/core/Result";
@@ -11,35 +10,25 @@ import { Profile } from "@modules/profiles/domain/profile";
 
 export class AddContactService implements Service<AddContactDTO, Promise<AddContactResponse>> {
 	private profileRepo: IProfileRepo;
-	private userRepo: IUserRepo;
 
-	constructor(userRepo: IUserRepo, profileRepo: IProfileRepo) {
-		this.userRepo = userRepo;
+	constructor(profileRepo: IProfileRepo) {
 		this.profileRepo = profileRepo;
 	}
 
 	public async execute(req: AddContactDTO): Promise<AddContactResponse> {
-		const { userId, contactId } = req;
+		const { currentProfileId, contactId } = req;
 		try {
-			try {
-				const isUserExist = await this.userRepo.getUserByUserId(userId);
-				if (!isUserExist) {
-					return left(new AddContactErrors.UserDoesntExistError(userId));
-				}
-			} catch (error) {
-				return left(new AddContactErrors.UserDoesntExistError(userId));
-			}
-
 			const profile: Profile = await this.profileRepo.getProfileByProfileId(contactId);
-			const currentProfile: Profile = await this.profileRepo.getProfileByUserId(userId);
+			const currentProfile: Profile = await this.profileRepo.getProfileByProfileId(currentProfileId);
 
 			if (!profile) return left(new AddContactErrors.RequestingDoesntExistError(contactId));
+			if (!currentProfile) return left(new AddContactErrors.CurrentProfileDoesntExistError(currentProfileId));
 
 			const contacts = currentProfile.contactIds;
 
 			const isContactAdlreadyAdded = contacts?.findIndex((_item) => _item === contactId);
 			if (isContactAdlreadyAdded && isContactAdlreadyAdded < 0) {
-				await this.profileRepo.pushContact(userId, contactId);
+				await this.profileRepo.pushContact(currentProfileId, contactId);
 			} else {
 				return left(new AddContactErrors.ContactAlreadyAdded(contactId));
 			}

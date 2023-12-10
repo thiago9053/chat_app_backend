@@ -2,7 +2,7 @@ import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { Request } from "../request";
 import { IDomainEvent } from "@shared/domain/events/IDomainEvent";
 
-export class RequestAccepted implements IDomainEvent {
+export class RequestRejected implements IDomainEvent {
 	public dateTimeOccurred: Date;
 	public request: Request;
 

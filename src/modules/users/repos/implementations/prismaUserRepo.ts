@@ -78,4 +78,15 @@ export class PrismaUserRepo implements IUserRepo {
 			},
 		});
 	}
+
+	async updateLastLogin(userId: string): Promise<void> {
+		await this.models.users.update({
+			where: {
+				userId,
+			},
+			data: {
+				lastLogin: new Date(),
+			},
+		});
+	}
 }

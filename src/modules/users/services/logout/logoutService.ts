@@ -30,6 +30,7 @@ export class LogoutService implements Service<LogoutDTO, Promise<LogoutResponse>
 			}
 
 			await this.authService.deAuthenticateUser(user.username.value);
+			await this.userRepo.updateLastLogin(userId);
 
 			return right(Result.ok<void>());
 		} catch (err) {

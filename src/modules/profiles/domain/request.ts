@@ -4,6 +4,8 @@ import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { ProfileId } from "@modules/profiles/domain/profileId";
 import { Result } from "@shared/core/Result";
 import { Validate } from "@shared/core/Validate";
+import { RequestAccepted } from "./events/requestAccepted";
+import { RequestRejected } from "./events/requestRejected";
 
 export type RequestStatus = "Pending" | "Rejected" | "Accepted";
 
@@ -37,6 +39,18 @@ export class Request extends AggregateRoot<RequestProps> {
 
 	get createdAt(): Date {
 		return this.props.createdAt;
+	}
+
+	acceptRequest(): Result<void> {
+		this.props.status = "Accepted";
+		this.addDomainEvent(new RequestAccepted(this));
+		return Result.ok<void>();
+	}
+
+	rejectRequest(): Result<void> {
+		this.props.status = "Rejected";
+		this.addDomainEvent(new RequestRejected(this));
+		return Result.ok<void>();
 	}
 
 	public static create(props: RequestProps, id?: UniqueEntityID): Result<Request> {

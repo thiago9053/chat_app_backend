@@ -1,4 +1,5 @@
-import { addContactController } from "@modules/profiles/services/contacts/addContact";
+import { getCurrentContactsController } from "@modules/profiles/services/contacts/getCurrentContacts";
+import { findProfileController } from "@modules/profiles/services/profiles/findProfile";
 import { updateProfileController } from "@modules/profiles/services/profiles/updateProfile";
 import { middleware } from "@shared/infra/middleware";
 import express from "express";
@@ -9,6 +10,10 @@ profileRouter.post("/update", middleware.ensureAuthenticated(), (req, res) =>
 	updateProfileController.execute(req, res)
 );
 
-profileRouter.post("/contact", middleware.ensureAuthenticated(), (req, res) => addContactController.execute(req, res));
+profileRouter.get("/contacts", middleware.ensureAuthenticated(), (req, res) =>
+	getCurrentContactsController.execute(req, res)
+);
+
+profileRouter.get("/list", (req, res) => findProfileController.execute(req, res));
 
 export { profileRouter };

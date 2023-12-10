@@ -25,7 +25,7 @@ export class ProfileAdapter {
 		const phoneNumberOrError = ProfilePhoneNumber.create({ phoneNumber: raw.phoneNumber });
 		const locationOrError = ProfileLocation.create({ location: raw.location });
 		const nameOrError = ProfileName.create({ name: raw.name });
-		console.log(raw);
+
 		const profileOrError = Profile.create(
 			{
 				userId: userIdOrError.getValue(),

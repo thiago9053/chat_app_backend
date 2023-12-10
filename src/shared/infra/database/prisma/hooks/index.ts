@@ -10,6 +10,15 @@ export const xprisma = new PrismaClient().$extends({
 				DomainEvents.dispatchEventsForAggregate(new UniqueEntityID(user.userId));
 			},
 		},
+		requests: {
+			async updateWithPost(opts: any) {
+				const request = await xprisma.requests.update(opts);
+				if (opts.data.status === "Accepted")
+					DomainEvents.dispatchEventsForAggregate(new UniqueEntityID(request.requestId));
+				if (opts.data.status === "Rejected")
+					DomainEvents.dispatchEventsForAggregate(new UniqueEntityID(request.requestId));
+			},
+		},
 	},
 });
 

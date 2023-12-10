@@ -1,4 +1,4 @@
 export interface AddContactDTO {
-	userId: string;
+	currentProfileId: string;
 	contactId: string;
 }
