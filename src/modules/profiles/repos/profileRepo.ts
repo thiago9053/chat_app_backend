@@ -7,6 +7,7 @@ export interface IProfileRepo {
 	create(profile: Profile): Promise<void>;
 	getProfileByProfileId(profileId: ProfileId | string): Promise<Profile>;
 	getProfileByUserId(userId: UserId | string): Promise<Profile>;
+	getProfilesByProfileIds(profileIds: string[], fields?: { [key: string]: boolean }): Promise<Profile[]>;
 	updateProfile(userId: UserId | string, field: string, data: any): Promise<void>;
 	pushContact(currentProfileId: string, contactId: string): Promise<void>;
 	getContacts(userId: string): Promise<any>;

@@ -59,7 +59,6 @@ export class PrismaProfileRepo implements IProfileRepo {
 				profileId: pid,
 			},
 		});
-		console.log(62, profile);
 		if (!profile) throw new Error("Profile not found.");
 		return ProfileAdapter.toDomain(profile);
 	}
@@ -168,5 +167,21 @@ export class PrismaProfileRepo implements IProfileRepo {
 		});
 
 		return { profiles: listProfiles, users: listUsers };
+	}
+
+	async getProfilesByProfileIds(profileIds: string[], fields?: { [key: string]: boolean }): Promise<Profile[]> {
+		const profiles = await this.models.profiles.findMany({
+			where: {
+				OR: profileIds.map((id) => ({ profileId: id })),
+			},
+			...(fields && { select: fields }),
+		});
+
+		let result: Profile[] = [];
+		for (let i = 0; i < profiles.length; i++) {
+			const domain = ProfileAdapter.toDomain(profiles[i]);
+			result.push(domain);
+		}
+		return result;
 	}
 }

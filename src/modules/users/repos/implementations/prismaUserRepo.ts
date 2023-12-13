@@ -89,4 +89,18 @@ export class PrismaUserRepo implements IUserRepo {
 			},
 		});
 	}
+
+	async getUsers(userIds: string[]): Promise<User[]> {
+		const users = await this.models.users.findMany({
+			where: {
+				OR: userIds.map((id) => ({ userId: id })),
+			},
+		});
+		console.log(100, users);
+		let result: User[] = [];
+		for (let i = 0; i < users.length; i++) {
+			result.push(UserAdapter.toDomain(users[i]));
+		}
+		return result;
+	}
 }
