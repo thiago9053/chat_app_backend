@@ -10,6 +10,14 @@ export namespace CreateRequestErrors {
 		}
 	}
 
+	export class MessageInvalid extends Result<ServiceError> {
+		constructor() {
+			super(false, {
+				message: "Message is invalid",
+			} as ServiceError);
+		}
+	}
+
 	export class RequestingDoesntExistError extends Result<ServiceError> {
 		constructor(profileId: string) {
 			super(false, {

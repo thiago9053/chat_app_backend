@@ -13,6 +13,7 @@ import { IRequestRepo } from "@modules/profiles/repos/requestRepo";
 import { ProfileId } from "@modules/profiles/domain/profileId";
 import { UniqueEntityID } from "@shared/domain/UniqueEntityID";
 import { CreateRequestErrors } from "./createRequestErrors";
+import { RequestMessage } from "@modules/profiles/domain/requestMessage";
 
 export class CreateRequestService implements Service<CreateRequestDTO, Promise<CreateRequestResponse>> {
 	private profileRepo: IProfileRepo;
@@ -29,7 +30,7 @@ export class CreateRequestService implements Service<CreateRequestDTO, Promise<C
 		let user: User;
 		let profile: Profile;
 		let request: Request;
-		const { userId, requesting } = req;
+		const { userId, requesting, message } = req;
 
 		try {
 			try {
@@ -51,11 +52,19 @@ export class CreateRequestService implements Service<CreateRequestDTO, Promise<C
 					if (isRequestExist) {
 						return left(new CreateRequestErrors.RequestAlreadyExistsError());
 					}
+
+					const messageOrError = RequestMessage.create({ message });
+
+					if (!messageOrError.isSuccess) {
+						return left(new CreateRequestErrors.MessageInvalid());
+					}
+
 					const requestOrError: Result<Request> = Request.create({
 						requestedBy: profile.profileId,
 						requesting: ProfileId.create(new UniqueEntityID(requesting)).getValue(),
 						createdAt: new Date(),
 						status: "Pending",
+						message: messageOrError.getValue(),
 					});
 
 					if (!requestOrError.isSuccess) {

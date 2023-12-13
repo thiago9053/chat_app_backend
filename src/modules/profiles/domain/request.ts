@@ -6,6 +6,7 @@ import { Result } from "@shared/core/Result";
 import { Validate } from "@shared/core/Validate";
 import { RequestAccepted } from "./events/requestAccepted";
 import { RequestRejected } from "./events/requestRejected";
+import { RequestMessage } from "./requestMessage";
 
 export type RequestStatus = "Pending" | "Rejected" | "Accepted";
 
@@ -13,6 +14,7 @@ interface RequestProps {
 	requestedBy: ProfileId;
 	requesting: ProfileId;
 	createdAt: Date;
+	message: RequestMessage;
 	status: RequestStatus;
 }
 
@@ -35,6 +37,10 @@ export class Request extends AggregateRoot<RequestProps> {
 
 	get status(): RequestStatus {
 		return this.props.status;
+	}
+
+	get message(): RequestMessage {
+		return this.props.message;
 	}
 
 	get createdAt(): Date {

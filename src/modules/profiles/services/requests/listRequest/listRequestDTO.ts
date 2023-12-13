@@ -7,6 +7,7 @@ export interface RequestItem {
 	name: string;
 	email: string;
 	avatarUrl: string;
+	message?: string;
 }
 
 export interface ListRequestResponseDTO {

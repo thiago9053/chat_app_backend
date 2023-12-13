@@ -61,6 +61,7 @@ export class ListRequestService implements Service<ListRequestDTO, Promise<ListR
 				name: request.name.value,
 				createAt: listRequests?.find((_request) => _request.requestedBy.equals(request.profileId))?.createdAt,
 				email: listRequestWithEmail?.find((_request) => _request.userId.equals(request.userId))?.email.value || "",
+				message: listRequests?.find((_request) => _request.requestedBy.equals(request.profileId))?.message.value || "",
 			}));
 
 			return right(Result.ok<ListRequestResponseDTO>({ requestItems } as ListRequestResponseDTO));

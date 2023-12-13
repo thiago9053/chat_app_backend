@@ -7,6 +7,7 @@ export type CreateRequestResponse = Either<
 	| CreateRequestErrors.UserDoesntExistError
 	| CreateRequestErrors.RequestAlreadyExistsError
 	| CreateRequestErrors.RequestingDoesntExistError
+	| CreateRequestErrors.MessageInvalid
 	| AppError.UnexpectedError
 	| Result<any>,
 	Result<void>

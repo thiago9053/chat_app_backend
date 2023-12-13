@@ -50,4 +50,5 @@ model requests {
   requesting String
   createdAt DateTime
   status RequestStatus @default(Pending)
+  message String
 }
