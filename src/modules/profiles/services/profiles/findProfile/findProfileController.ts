@@ -1,7 +1,6 @@
 import { FindProfileService } from "./findProfileService";
 import { BaseController } from "@shared/infra/controller/BaseController";
-import { DecodedExpressRequest } from "@modules/auth/models/decodedRequest";
-import { Response } from "express";
+import { Response, Request } from "express";
 import { FindProfileDTO } from "./findProfileDTO";
 
 export class FindProfileController extends BaseController {
@@ -12,11 +11,11 @@ export class FindProfileController extends BaseController {
 		this.service = service;
 	}
 
-	async executeImpl(req: DecodedExpressRequest, res: Response): Promise<any> {
-		const { keyword } = req.body as FindProfileDTO;
+	async executeImpl(req: Request, res: Response): Promise<any> {
+		const { keyword } = req.query;
 
 		try {
-			const result = await this.service.execute({ keyword });
+			const result = await this.service.execute({ keyword } as FindProfileDTO);
 
 			if (result.isLeft()) {
 				return this.fail(res, result.value.getError().message);
