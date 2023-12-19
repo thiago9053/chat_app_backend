@@ -141,17 +141,45 @@ export class PrismaProfileRepo implements IProfileRepo {
 	async findByKeyword(keyword: string): Promise<any> {
 		const profiles = await this.models.profiles.findMany({
 			where: {
-				name: {
-					contains: keyword,
-				},
+				OR: [
+					{
+						name: {
+							contains: keyword,
+						},
+					},
+					{
+						name: {
+							contains: keyword.toLowerCase(),
+						},
+					},
+					{
+						name: {
+							contains: keyword.toUpperCase(),
+						},
+					},
+				],
 			},
 		});
 
 		const users = await this.models.users.findMany({
 			where: {
-				email: {
-					contains: keyword,
-				},
+				OR: [
+					{
+						email: {
+							contains: keyword,
+						},
+					},
+					{
+						email: {
+							contains: keyword.toLowerCase(),
+						},
+					},
+					{
+						email: {
+							contains: keyword.toUpperCase(),
+						},
+					},
+				],
 			},
 		});
 
@@ -159,11 +187,11 @@ export class PrismaProfileRepo implements IProfileRepo {
 
 		const listProfiles = await this.models.profiles.findMany({
 			where: { OR: foundUserIds.map((id) => ({ userId: id })) },
-			select: { avatarUrl: true, name: true, signature: true },
+			select: { avatarUrl: true, name: true, signature: true, profileId: true, userId: true },
 		});
 		const listUsers = await this.models.users.findMany({
 			where: { OR: foundUserIds.map((id) => ({ userId: id })) },
-			select: { email: true },
+			select: { email: true, userId: true },
 		});
 
 		return { profiles: listProfiles, users: listUsers };

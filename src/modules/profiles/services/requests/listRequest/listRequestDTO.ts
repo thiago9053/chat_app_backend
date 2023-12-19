@@ -3,11 +3,12 @@ export interface ListRequestDTO {
 }
 
 export interface RequestItem {
-	createAt?: Date;
+	createdAt?: Date;
 	name: string;
 	email: string;
 	avatarUrl: string;
 	message?: string;
+	requestId: string;
 }
 
 export interface ListRequestResponseDTO {

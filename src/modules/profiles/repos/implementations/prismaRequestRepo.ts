@@ -72,7 +72,12 @@ export class PrismaRequestRepo implements IRequestRepo {
 	async list(userId: string): Promise<Request[]> {
 		const requests = await this.models.requests.findMany({
 			where: {
-				requesting: userId,
+				AND: [
+					{
+						requesting: userId,
+					},
+					{ status: "Pending" },
+				],
 			},
 		});
 		let result: Request[] = [];

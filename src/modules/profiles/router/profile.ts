@@ -19,6 +19,6 @@ profileRouter.get("/contacts/list-requests", middleware.ensureAuthenticated(), (
 	listRequestController.execute(req, res)
 );
 
-profileRouter.get("/list", (req, res) => findProfileController.execute(req, res));
+profileRouter.get("/list", middleware.ensureAuthenticated(), (req, res) => findProfileController.execute(req, res));
 
 export { profileRouter };

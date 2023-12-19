@@ -21,7 +21,7 @@ export class RequestAdapter {
 				requestedBy: ProfileId.create(new UniqueEntityID(raw.requestedBy)).getValue(),
 				requesting: ProfileId.create(new UniqueEntityID(raw.requesting)).getValue(),
 				status: raw.status,
-				createdAt: raw.createAt,
+				createdAt: raw.createdAt,
 				message: RequestMessage.create({ message: raw.message }).getValue(),
 			},
 			new UniqueEntityID(raw.requestId)

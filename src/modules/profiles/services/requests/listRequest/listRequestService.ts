@@ -54,15 +54,19 @@ export class ListRequestService implements Service<ListRequestDTO, Promise<ListR
 				listRequestWithProfile.map((request) => request.userId.getStringValue())
 			);
 
-			console.log(57, listRequestWithEmail[0].userId);
-
 			const requestItems: RequestItem[] = listRequestWithProfile.map((request) => ({
 				avatarUrl: request.avatar,
 				name: request.name.value,
-				createAt: listRequests?.find((_request) => _request.requestedBy.equals(request.profileId))?.createdAt,
+				createdAt: listRequests?.find((_request) => _request.requestedBy.equals(request.profileId))?.createdAt,
 				email: listRequestWithEmail?.find((_request) => _request.userId.equals(request.userId))?.email.value || "",
 				message: listRequests?.find((_request) => _request.requestedBy.equals(request.profileId))?.message.value || "",
+				requestId:
+					listRequests
+						?.find((_request) => _request.requestedBy.equals(request.profileId))
+						?.requestId.getStringValue() || "",
 			}));
+
+			console.log(listRequests);
 
 			return right(Result.ok<ListRequestResponseDTO>({ requestItems } as ListRequestResponseDTO));
 		} catch (err) {

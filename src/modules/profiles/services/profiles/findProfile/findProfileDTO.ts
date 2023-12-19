@@ -1,5 +1,6 @@
 export interface FindProfileDTO {
 	keyword: string;
+	userId: string;
 }
 
 export interface FindProfile {
@@ -7,6 +8,7 @@ export interface FindProfile {
 	name?: string;
 	avatarUrl?: string;
 	userId: string;
+	profileId: string;
 }
 
 export interface FindProfileResponseDTO {
